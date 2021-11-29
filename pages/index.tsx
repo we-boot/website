@@ -9,9 +9,11 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import { BloomPass } from "three/examples/jsm/postprocessing/BloomPass";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import gsap, { Expo } from "gsap";
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const textRef = useRef<HTMLParagraphElement>(null);
 
     function renderCanvas() {
         console.log("render canvas");
@@ -74,7 +76,7 @@ export default function Home() {
             console.log("loading model");
             let gltfLoader = new GLTFLoader();
             gltfLoader.load("phone.gltf", (gltf) => {
-                gltf.scene.translateX(0);
+                gltf.scene.translateX(-0.2);
                 gltf.scene.rotateY(Math.PI);
                 gltf.scene.rotateX(-Math.PI / 12);
 
@@ -94,14 +96,33 @@ export default function Home() {
             let elapsedTime = clock.getDelta();
 
             if (phone) {
-                phone.rotateY(0.5 * elapsedTime);
-                phone.rotateX(0.1 * elapsedTime);
+                // phone.rotateY(0.5 * elapsedTime);
+                // phone.rotateX(0.1 * elapsedTime);
             }
 
             // renderer.render(scene, camera);
             composer.render();
             window.requestAnimationFrame(renderLoop);
         }
+
+        function onMouseMove(ev: MouseEvent) {
+            if (!phone) return;
+            let xPercent = ev.clientX / window.innerWidth;
+            let yPercent = ev.clientY / window.innerHeight;
+            phone.rotation.x = Math.PI / 4 + (yPercent * Math.PI) / 2 + Math.PI / 2;
+            phone.rotation.y = Math.PI / 4 - (xPercent * Math.PI) / 2;
+            // phone.rotation.y -= ev.movementX * 0.001;
+            // phone.rotation.x += ev.movementY * 0.001;
+        }
+        window.addEventListener("mousemove", onMouseMove);
+
+        // let previousScroll = window.scrollY;
+        // function onScroll(ev: Event) {
+        //     if (!phone) return;
+        //     phone.rotation.x += (window.scrollY - previousScroll) * 0.001;
+        //     previousScroll = window.scrollY;
+        // }
+        // window.addEventListener("scroll", onScroll);
 
         renderLoop();
     }
@@ -110,30 +131,53 @@ export default function Home() {
         if (canvasRef.current) {
             renderCanvas();
         }
+
+        async function next() {
+            gsap.to(canvasRef.current, { opacity: 0, duration: 0.5, x: -800, scale: 0.1, ease: Expo.easeInOut }).then(() =>
+                gsap.fromTo(
+                    canvasRef.current,
+                    { opacity: 0, duration: 2, x: 200, scale: 0.1, ease: Expo.easeInOut },
+                    { opacity: 1, duration: 2, x: 0, scale: 1, ease: Expo.easeInOut }
+                )
+            );
+            gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeInOut }).then(() =>
+                gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeInOut })
+            );
+        }
+
+        let id = setInterval(next, 5000);
+        return () => {
+            clearInterval(id);
+        };
+
+        // gsap.from(canvasRef.current, { scale: 0, duration: 0.5, x: 500, opacity: 0 });
     }, []);
 
     return (
         <div>
             <div
+                className="h-screen w-full flex flex-col relative text-white max-w-full overflow-x-hidden"
                 style={{
-                    height: "100vh",
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    position: "relative",
                     background: "url(/gradient.png)",
                     backgroundSize: "100vw 101vh",
-                    color: "white",
                 }}>
                 <nav className="p-6">
                     <h1 className="font-bold text-2xl leading-3">weboot</h1>
                     <p className="opacity-50 text-lg">we solve digital challenges</p>
                 </nav>
-                <div className="overflow-x-hidden" style={{ position: "absolute", top: 0, left: 0, width: "100%", pointerEvents: "none" }}>
-                    <canvas ref={canvasRef} />
+                <div className="overflow-x-hidden absolute top-0 left-0 w-full pointer-events-none">
+                    <canvas className="origin-center" ref={canvasRef} />
+                </div>
+                <div className="flex justify-end items-center flex-grow">
+                    <div className="m-20 text-4xl font-bold text-right">
+                        <p>We create professional grade</p>
+                        <p ref={textRef}>automatisation software.</p>
+                    </div>
                 </div>
             </div>
-            {/* <div>next page here</div> */}
+            <div className="h-screen w-full text-white" style={{ background: "#111" }}>
+                <div className="p-10">nice</div>
+            </div>
         </div>
     );
 }
