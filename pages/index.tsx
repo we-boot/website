@@ -50,10 +50,10 @@ export default function Home() {
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         });
 
-        let ambientLight = new THREE.AmbientLight(0xffffff, 1);
-        scene.add(ambientLight);
-        let pointLight = new THREE.PointLight(0x300078, 2);
-        pointLight.position.x = 1;
+        // let ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+        // scene.add(ambientLight);
+        let pointLight = new THREE.PointLight(0xeeccff, 3);
+        pointLight.position.x = -2;
         pointLight.position.y = 3;
         pointLight.position.z = 2;
         scene.add(pointLight);
@@ -66,14 +66,15 @@ export default function Home() {
         // Bloom pass https://github.com/mrdoob/three.js/blob/master/examples/webgl_postprocessing_unreal_bloom.html
         // Texture from https://polyhaven.com/a/studio_small_09
         rgbeLoader.setPath("/");
-        rgbeLoader.load("studio_small_09_4k.hdr", (texture) => {
+        rgbeLoader.load("studio_small_09_1k.hdr", (texture) => {
             texture.mapping = THREE.EquirectangularReflectionMapping;
+            texture.generateMipmaps = true;
             scene.environment = texture;
 
             console.log("loading model");
             let gltfLoader = new GLTFLoader();
             gltfLoader.load("phone.gltf", (gltf) => {
-                gltf.scene.translateX(-0.2);
+                gltf.scene.translateX(0);
                 gltf.scene.rotateY(Math.PI);
                 gltf.scene.rotateX(-Math.PI / 12);
 
@@ -84,7 +85,7 @@ export default function Home() {
 
         let composer = new EffectComposer(renderer);
         composer.addPass(new RenderPass(scene, camera));
-        let bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.05, 20, 0.5);
+        let bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.05, 20, 0.02);
         composer.addPass(bloom);
 
         let clock = new THREE.Clock();
