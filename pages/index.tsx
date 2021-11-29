@@ -24,7 +24,7 @@ export default function Home() {
         let scene = new THREE.Scene();
 
         let windowHeight = window.innerHeight,
-            windowWidth = window.innerWidth;
+            windowWidth = window.innerWidth / 2;
 
         let renderer = new THREE.WebGLRenderer({
             canvas: canvas,
@@ -42,7 +42,7 @@ export default function Home() {
 
         window.addEventListener("resize", () => {
             // Update sizes
-            windowWidth = window.innerWidth;
+            windowWidth = window.innerWidth / 2;
             windowHeight = window.innerHeight;
 
             // Update camera
@@ -77,7 +77,7 @@ export default function Home() {
             console.log("loading model");
             let gltfLoader = new GLTFLoader();
             gltfLoader.load("phone.gltf", (gltf) => {
-                gltf.scene.translateX(-0.2);
+                gltf.scene.translateX(0);
                 gltf.scene.rotateY(Math.PI);
                 gltf.scene.rotateX(-Math.PI / 12);
 
@@ -136,10 +136,10 @@ export default function Home() {
         async function next() {
             // Animate phone
             mouseAnimationRef.current = false;
-            gsap.to(phoneRef.current!.position, { x: -1, duration: 1, ease: Expo.easeIn });
+            gsap.to(phoneRef.current!.position, { x: -0.5, duration: 1, ease: Expo.easeIn });
             gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then(() => {
                 gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
-                gsap.fromTo(phoneRef.current!.position, { x: 0.2 }, { x: -0.2, duration: 1, ease: Expo.easeOut });
+                gsap.fromTo(phoneRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
                 gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
                     mouseAnimationRef.current = true;
                 });
@@ -171,18 +171,17 @@ export default function Home() {
                     <h1 className="font-bold text-2xl leading-3">weboot</h1>
                     <p className="opacity-50 text-lg">we solve digital challenges</p>
                 </nav>
-                <div className="overflow-x-hidden absolute top-0 left-0 w-full pointer-events-none">
+                <div className="overflow-x-hidden absolute top-0 left-0 w-full h-full flex flex-row items-center">
                     <canvas className="origin-center" ref={canvasRef} />
-                </div>
-                <div className="flex justify-end items-center flex-grow">
                     <div className="m-20 text-4xl font-bold text-right">
                         <p>We create professional grade</p>
                         <p ref={textRef}>automatisation software.</p>
                     </div>
                 </div>
+                <div className=" bsolute top-0 left-0 w-full h-full flex justify-end items-center flex-grow"></div>
             </div>
             <div className="h-screen w-full text-white" style={{ background: "#111" }}>
-                <div className="p-10">nice</div>
+                <div className="p-10 text-4xl font-bold text-center">How we work</div>
             </div>
         </div>
     );
