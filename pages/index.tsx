@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -12,6 +12,7 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import gsap, { Expo, Power0 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { NavBar } from "../components/NavItem";
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -169,11 +170,8 @@ export default function Home() {
                     background: "url(/gradient.png)",
                     backgroundSize: "100vw 101vh",
                 }}>
-                <nav className="p-6">
-                    <h1 className="font-bold text-2xl leading-3">weboot</h1>
-                    <p className="opacity-50 text-lg">we solve digital challenges</p>
-                </nav>
-                <div className="overflow-x-hidden absolute top-0 left-0 w-full h-full flex flex-row items-center">
+                <NavBar />
+                <div className="overflow-x-hidden absolute top-0 left-0 w-full h-full flex flex-row items-center pointer-events-none">
                     <canvas className="origin-center" ref={canvasRef} />
                     <div className="m-20 text-4xl font-bold text-right">
                         <p>We build professional grade</p>
