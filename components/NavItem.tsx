@@ -8,10 +8,11 @@ export function NavBar() {
                 <p className="opacity-50 text-lg">we solve digital challenges</p>
             </div>
             <ul className="flex items-center">
-                <NavItem>Our workflow</NavItem>
+                <NavItem>How we work</NavItem>
                 <NavItem>Why us</NavItem>
                 <NavItem>Our solutions</NavItem>
                 <NavItem>Contact</NavItem>
+                <NavItem>About us</NavItem>
             </ul>
         </nav>
     );

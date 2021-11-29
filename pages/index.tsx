@@ -13,12 +13,72 @@ import gsap, { Expo, Power0 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { NavBar } from "../components/NavItem";
+import { TextureLoader } from "three";
+
+type SpotlightItem = {
+    imageUrl: string;
+    text: string;
+    type: "phone" | "computer";
+    texture?: THREE.Texture;
+};
+
+const SPOTLIGHT: SpotlightItem[] = [
+    {
+        type: "phone",
+        imageUrl: "/groen.png",
+        text: "automatisation software",
+    },
+    {
+        type: "phone",
+        imageUrl: "/inspections.png",
+        text: "productivity tools",
+    },
+];
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
     const phoneRef = useRef<THREE.Group>();
     const mouseAnimationRef = useRef<boolean>(true);
+    const phoneScreenRef = useRef<THREE.MeshStandardMaterial>();
+    const spotlightIndexRef = useRef<number>(0);
+
+    async function showSpotlightItem(spotlight: SpotlightItem) {
+        // Update phone texture
+        if (!spotlight.texture) {
+            let textureLoader = new TextureLoader();
+            spotlight.texture = await textureLoader.loadAsync(spotlight.imageUrl);
+            spotlight.texture.flipY = false;
+        }
+        phoneScreenRef.current!.map = spotlight.texture!;
+        phoneScreenRef.current!.map.needsUpdate = true;
+
+        gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
+        gsap.fromTo(phoneRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
+        gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
+            mouseAnimationRef.current = true;
+        });
+    }
+
+    function nextSpotlightItem() {
+        if (++spotlightIndexRef.current >= SPOTLIGHT.length) {
+            spotlightIndexRef.current = 0;
+        }
+        let spotlight = SPOTLIGHT[spotlightIndexRef.current];
+
+        // Animate phone
+        mouseAnimationRef.current = false;
+        gsap.to(phoneRef.current!.position, { x: -0.5, duration: 1, ease: Expo.easeIn });
+        gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then(async () => {
+            showSpotlightItem(spotlight);
+        });
+
+        // Animate text
+        gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeIn }).then(() => {
+            textRef.current!.innerText = spotlight.text;
+            gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeOut });
+        });
+    }
 
     function renderCanvas() {
         console.log("render canvas");
@@ -80,12 +140,24 @@ export default function Home() {
             console.log("loading model");
             let gltfLoader = new GLTFLoader();
             gltfLoader.load("phone.gltf", (gltf) => {
-                gltf.scene.translateX(0);
+                gltf.scene.translateX(-0.5);
                 gltf.scene.rotateY(Math.PI);
                 gltf.scene.rotateX(-Math.PI / 12);
 
+                // Find screen material
+                gltf.scene.traverse((child: any) => {
+                    if (child.isMesh) {
+                        let mesh = child as THREE.Mesh;
+                        let material = mesh.material as THREE.MeshStandardMaterial;
+                        if (material.map?.image) {
+                            phoneScreenRef.current = material;
+                        }
+                    }
+                });
+
                 scene.add(gltf.scene);
                 phoneRef.current = gltf.scene;
+                showSpotlightItem(SPOTLIGHT[0]);
             });
         });
 
@@ -136,30 +208,10 @@ export default function Home() {
             renderCanvas();
         }
 
-        async function next() {
-            // Animate phone
-            mouseAnimationRef.current = false;
-            gsap.to(phoneRef.current!.position, { x: -0.5, duration: 1, ease: Expo.easeIn });
-            gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then(() => {
-                gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
-                gsap.fromTo(phoneRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
-                gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
-                    mouseAnimationRef.current = true;
-                });
-            });
-
-            // Animate text
-            gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeIn }).then(() =>
-                gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeOut })
-            );
-        }
-
-        let id = setInterval(next, 5000);
+        let id = setInterval(nextSpotlightItem, 5000);
         return () => {
             clearInterval(id);
         };
-
-        // gsap.from(canvasRef.current, { scale: 0, duration: 0.5, x: 500, opacity: 0 });
     }, []);
 
     return (
@@ -187,8 +239,28 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="h-screen w-full text-white" style={{ background: "#111" }}>
-                <div className="p-10 text-4xl font-bold text-center">How we work</div>
+            <div
+                className="h-screen w-full text-white"
+                style={{
+                    // background: "url(/gradient2.png)",
+                    background: "#111",
+                    backgroundSize: "100vw 101vh",
+                }}>
+                <div className="flex items-center flex-col p-10">
+                    <p className=" text-4xl font-bold">How we work</p>
+                    <p className="text-2xl opacity-50 mt-4">Your solution in 4 steps</p>
+                </div>
+
+                <div className="p-10 rounded-3xl m-10 inline-flex" style={{ background: "#ffffff11" }}>
+                    <img src="/Saly-26.png" style={{ height: "150px" }} />
+                    <div className="ml-10">
+                        <h2 className="opacity-50">Step 1: pitch</h2>
+                        <div className="font-bold text-2xl">
+                            <p className="">Tell us your problem or idea</p>
+                            <p className="">we’ll let you know what’s possible</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
