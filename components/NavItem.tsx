@@ -8,7 +8,7 @@ export function NavBar() {
                 <p className="opacity-50 text-lg">we solve digital challenges</p>
             </div>
             <ul className="flex items-center">
-                <NavItem>How we work</NavItem>
+                <NavItem onClick={() => window.scrollTo({ behavior: "smooth", top: window.innerHeight })}>How we work</NavItem>
                 <NavItem>Why us</NavItem>
                 <NavItem>Our solutions</NavItem>
                 <NavItem>Contact</NavItem>
@@ -18,9 +18,9 @@ export function NavBar() {
     );
 }
 
-export function NavItem(props: { children: React.ReactNode }) {
+export function NavItem(props: React.LiHTMLAttributes<HTMLLIElement>) {
     return (
-        <li className="bg-white bg-opacity-20 py-2 px-3 rounded-lg opacity-80 font-bold text-sm hover:bg-opacity-30 cursor-pointer mx-1.5">
+        <li {...props} className="bg-white bg-opacity-20 py-2 px-3 rounded-lg opacity-80 font-bold text-sm hover:bg-opacity-30 cursor-pointer mx-1.5">
             {props.children}
         </li>
     );

@@ -53,11 +53,16 @@ export default function Home() {
         phoneScreenRef.current!.map = spotlight.texture!;
         phoneScreenRef.current!.map.needsUpdate = true;
 
+        // Animate model
         gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
         gsap.fromTo(phoneRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
         gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
             mouseAnimationRef.current = true;
         });
+
+        // Animate text
+        textRef.current!.innerText = spotlight.text;
+        gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeOut });
     }
 
     function nextSpotlightItem() {
@@ -66,17 +71,14 @@ export default function Home() {
         }
         let spotlight = SPOTLIGHT[spotlightIndexRef.current];
 
+        // Animate text
+        gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeIn });
+
         // Animate phone
         mouseAnimationRef.current = false;
         gsap.to(phoneRef.current!.position, { x: -0.5, duration: 1, ease: Expo.easeIn });
         gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then(async () => {
             showSpotlightItem(spotlight);
-        });
-
-        // Animate text
-        gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeIn }).then(() => {
-            textRef.current!.innerText = spotlight.text;
-            gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeOut });
         });
     }
 
@@ -227,7 +229,7 @@ export default function Home() {
                     <canvas className="origin-center" ref={canvasRef} />
                     <div className="m-20 text-4xl font-bold text-right">
                         <p>We build professional grade</p>
-                        <p ref={textRef}>automatisation software.</p>
+                        <p ref={textRef}></p>
                     </div>
                 </div>
                 <div className="mt-auto flex justify-center">
