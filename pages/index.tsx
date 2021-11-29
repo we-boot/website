@@ -10,6 +10,8 @@ import { BloomPass } from "three/examples/jsm/postprocessing/BloomPass";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import gsap, { Expo, Power0 } from "gsap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -174,11 +176,18 @@ export default function Home() {
                 <div className="overflow-x-hidden absolute top-0 left-0 w-full h-full flex flex-row items-center">
                     <canvas className="origin-center" ref={canvasRef} />
                     <div className="m-20 text-4xl font-bold text-right">
-                        <p>We create professional grade</p>
+                        <p>We build professional grade</p>
                         <p ref={textRef}>automatisation software.</p>
                     </div>
                 </div>
-                <div className=" bsolute top-0 left-0 w-full h-full flex justify-end items-center flex-grow"></div>
+                <div className="mt-auto flex justify-center">
+                    <div
+                        className="p-10 flex items-center flex-col opacity-50"
+                        onClick={() => window.scrollTo({ behavior: "smooth", top: window.innerHeight, left: 0 })}>
+                        <p className="">Scroll down for more info</p>
+                        <FontAwesomeIcon icon={faChevronDown} />
+                    </div>
+                </div>
             </div>
             <div className="h-screen w-full text-white" style={{ background: "#111" }}>
                 <div className="p-10 text-4xl font-bold text-center">How we work</div>
