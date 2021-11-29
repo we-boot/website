@@ -50,8 +50,9 @@ export default function Home() {
             spotlight.texture = await textureLoader.loadAsync(spotlight.imageUrl);
             spotlight.texture.flipY = false;
         }
-        phoneScreenRef.current!.map = spotlight.texture!;
-        phoneScreenRef.current!.map.needsUpdate = true;
+        phoneScreenRef.current!.emissiveMap = spotlight.texture!;
+        phoneScreenRef.current!.emissiveMap.needsUpdate = true;
+        phoneScreenRef.current!.needsUpdate = true;
 
         // Animate model
         gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
@@ -121,11 +122,11 @@ export default function Home() {
 
         // let ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
         // scene.add(ambientLight);
-        let pointLight = new THREE.PointLight(0xeeccff, 3);
-        pointLight.position.x = -2;
-        pointLight.position.y = 3;
-        pointLight.position.z = 2;
-        scene.add(pointLight);
+        // let pointLight = new THREE.PointLight(0xeeccff, 3);
+        // pointLight.position.x = -2;
+        // pointLight.position.y = 3;
+        // pointLight.position.z = 2;
+        // scene.add(pointLight);
 
         console.log("loading environment texture");
         let rgbeLoader = new RGBELoader();
@@ -134,9 +135,9 @@ export default function Home() {
         // Bloom pass https://github.com/mrdoob/three.js/blob/master/examples/webgl_postprocessing_unreal_bloom.html
         // Texture from https://polyhaven.com/a/studio_small_09
         rgbeLoader.setPath("/");
-        rgbeLoader.load("studio_small_09_1k.hdr", (texture) => {
+        rgbeLoader.load("photo_studio_01_1k.hdr", (texture) => {
             texture.mapping = THREE.EquirectangularReflectionMapping;
-            texture.generateMipmaps = true;
+            // texture.generateMipmaps = true;
             scene.environment = texture;
 
             console.log("loading model");
@@ -151,7 +152,9 @@ export default function Home() {
                     if (child.isMesh) {
                         let mesh = child as THREE.Mesh;
                         let material = mesh.material as THREE.MeshStandardMaterial;
-                        if (material.map?.image) {
+                        if ((mesh.material as any).name === "Screen") {
+                            material.envMapIntensity = 0.04;
+                            material.roughness = 0;
                             phoneScreenRef.current = material;
                         }
                     }
@@ -159,6 +162,7 @@ export default function Home() {
 
                 scene.add(gltf.scene);
                 phoneRef.current = gltf.scene;
+                console.log("done loading model", phoneRef.current);
                 showSpotlightItem(SPOTLIGHT[0]);
             });
         });
