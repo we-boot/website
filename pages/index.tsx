@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { GLTFLoader, GLTFParser } from "three/examples/jsm/loaders/GLTFLoader";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import { BloomPass } from "three/examples/jsm/postprocessing/BloomPass";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
@@ -33,6 +33,11 @@ const SPOTLIGHT: SpotlightItem[] = [
         imageUrl: "/inspections.png",
         text: "productivity tools",
     },
+    {
+        type: "computer",
+        imageUrl: "/desktop.png",
+        text: "data driven dashboards",
+    },
 ];
 
 export default function Home() {
@@ -41,7 +46,9 @@ export default function Home() {
     const phoneRef = useRef<THREE.Group>();
     const mouseAnimationRef = useRef<boolean>(true);
     const phoneScreenRef = useRef<THREE.MeshStandardMaterial>();
-    const spotlightIndexRef = useRef<number>(0);
+    const monitorRef = useRef<THREE.Group>();
+    const monitorScreenRef = useRef<THREE.MeshStandardMaterial>();
+    const spotlightIndexRef = useRef<number>(2);
 
     async function showSpotlightItem(spotlight: SpotlightItem) {
         // Update phone texture
@@ -50,37 +57,57 @@ export default function Home() {
             spotlight.texture = await textureLoader.loadAsync(spotlight.imageUrl);
             spotlight.texture.flipY = false;
         }
-        phoneScreenRef.current!.emissiveMap = spotlight.texture!;
-        phoneScreenRef.current!.emissiveMap.needsUpdate = true;
-        phoneScreenRef.current!.needsUpdate = true;
 
-        // Animate model
-        gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
-        gsap.fromTo(phoneRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
-        gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
-            mouseAnimationRef.current = true;
-        });
+        if (spotlight.type === "phone") {
+            phoneScreenRef.current!.emissiveMap = spotlight.texture!;
+            phoneScreenRef.current!.emissiveMap.needsUpdate = true;
+            phoneScreenRef.current!.needsUpdate = true;
+
+            // Animate model
+            gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
+            gsap.fromTo(phoneRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
+            gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
+                mouseAnimationRef.current = true;
+            });
+        } else if (spotlight.type === "computer") {
+            monitorScreenRef.current!.emissiveMap = spotlight.texture!;
+            monitorScreenRef.current!.emissiveMap.needsUpdate = true;
+            monitorScreenRef.current!.needsUpdate = true;
+
+            // Animate model
+            gsap.fromTo(monitorRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
+            gsap.fromTo(monitorRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
+            gsap.to(monitorRef.current!.rotation, { y: -Math.PI / 2, duration: 2, ease: Expo.easeOut }).then(() => {
+                mouseAnimationRef.current = true;
+            });
+        }
 
         // Animate text
         textRef.current!.innerText = spotlight.text;
         gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeOut });
     }
 
-    function nextSpotlightItem() {
-        if (++spotlightIndexRef.current >= SPOTLIGHT.length) {
-            spotlightIndexRef.current = 0;
-        }
-        let spotlight = SPOTLIGHT[spotlightIndexRef.current];
+    async function nextSpotlightItem() {
+        mouseAnimationRef.current = false;
+
+        let currentSpotlight = SPOTLIGHT[spotlightIndexRef.current];
 
         // Animate text
         gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeIn });
 
         // Animate phone
-        mouseAnimationRef.current = false;
-        gsap.to(phoneRef.current!.position, { x: -0.5, duration: 1, ease: Expo.easeIn });
-        gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then(async () => {
-            showSpotlightItem(spotlight);
-        });
+        if (currentSpotlight.type === "phone") {
+            gsap.to(phoneRef.current!.position, { x: -0.5, duration: 1, ease: Expo.easeIn });
+            await gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then();
+        } else if (currentSpotlight.type === "computer") {
+            gsap.to(monitorRef.current!.position, { x: -2, duration: 1, ease: Expo.easeIn });
+            await gsap.to(monitorRef.current!.rotation, { y: Math.PI, duration: 1, ease: Expo.easeIn }).then();
+        }
+
+        if (++spotlightIndexRef.current >= SPOTLIGHT.length) {
+            spotlightIndexRef.current = 0;
+        }
+        showSpotlightItem(SPOTLIGHT[spotlightIndexRef.current]);
     }
 
     function renderCanvas() {
@@ -103,7 +130,7 @@ export default function Home() {
         let camera = new THREE.PerspectiveCamera(75, windowWidth / windowHeight, 0.1, 100);
         camera.position.x = 0;
         camera.position.y = 0;
-        camera.position.z = 0.4;
+        camera.position.z = 0.5;
         scene.add(camera);
 
         window.addEventListener("resize", () => {
@@ -140,8 +167,9 @@ export default function Home() {
             // texture.generateMipmaps = true;
             scene.environment = texture;
 
-            console.log("loading model");
+            console.log("loading models");
             let gltfLoader = new GLTFLoader();
+
             gltfLoader.load("phone.gltf", (gltf) => {
                 gltf.scene.translateX(-0.5);
                 gltf.scene.rotateY(Math.PI);
@@ -162,8 +190,29 @@ export default function Home() {
 
                 scene.add(gltf.scene);
                 phoneRef.current = gltf.scene;
-                console.log("done loading model", phoneRef.current);
-                showSpotlightItem(SPOTLIGHT[0]);
+                console.log("done loading phone model");
+                showSpotlightItem(SPOTLIGHT[2]);
+            });
+
+            gltfLoader.load("monitor.gltf", (gltf) => {
+                gltf.scene.translateX(-0.5);
+
+                // Find screen material
+                gltf.scene.traverse((child: any) => {
+                    if (child.isMesh) {
+                        let mesh = child as THREE.Mesh;
+                        let material = mesh.material as THREE.MeshStandardMaterial;
+                        if ((mesh.material as any).name === "Screen") {
+                            material.envMapIntensity = 0.04;
+                            material.roughness = 0;
+                            monitorScreenRef.current = material;
+                        }
+                    }
+                });
+
+                scene.add(gltf.scene);
+                monitorRef.current = gltf.scene;
+                console.log("done loading monitor model");
             });
         });
 
@@ -188,23 +237,19 @@ export default function Home() {
         }
 
         function onMouseMove(ev: MouseEvent) {
-            if (!phoneRef.current || !mouseAnimationRef.current) return;
-            let xPercent = ev.clientX / window.innerWidth + 0.2;
-            let yPercent = ev.clientY / window.innerHeight + 0.2;
-            phoneRef.current.rotation.x = Math.PI / 4 + (yPercent * Math.PI) / 2 + Math.PI / 2;
-            phoneRef.current.rotation.y = Math.PI / 4 - (xPercent * Math.PI) / 2;
-            // phone.rotation.y -= ev.movementX * 0.001;
-            // phone.rotation.x += ev.movementY * 0.001;
+            if (!mouseAnimationRef.current) return;
+            let spotlight = SPOTLIGHT[spotlightIndexRef.current];
+            if (spotlight.type === "phone" && phoneRef.current) {
+                let xPercent = ev.clientX / window.innerWidth + 0.2;
+                let yPercent = ev.clientY / window.innerHeight + 0.2;
+                phoneRef.current.rotation.x = Math.PI / 4 + (yPercent * Math.PI) / 2 + Math.PI / 2;
+                phoneRef.current.rotation.y = Math.PI / 4 - (xPercent * Math.PI) / 2;
+            } else if (spotlight.type === "computer" && monitorRef.current) {
+                let xPercent = ev.clientX / window.innerWidth + 0.2;
+                monitorRef.current.rotation.y = Math.PI * 1.5 + (xPercent * Math.PI) / 4;
+            }
         }
         window.addEventListener("mousemove", onMouseMove);
-
-        // let previousScroll = window.scrollY;
-        // function onScroll(ev: Event) {
-        //     if (!phone) return;
-        //     phone.rotation.x += (window.scrollY - previousScroll) * 0.001;
-        //     previousScroll = window.scrollY;
-        // }
-        // window.addEventListener("scroll", onScroll);
 
         renderLoop();
     }
