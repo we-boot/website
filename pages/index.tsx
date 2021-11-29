@@ -9,11 +9,13 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import { BloomPass } from "three/examples/jsm/postprocessing/BloomPass";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import gsap, { Expo } from "gsap";
+import gsap, { Expo, Power0 } from "gsap";
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
+    const phoneRef = useRef<THREE.Group>();
+    const mouseAnimationRef = useRef<boolean>(true);
 
     function renderCanvas() {
         console.log("render canvas");
@@ -62,7 +64,6 @@ export default function Home() {
 
         console.log("loading environment texture");
         let rgbeLoader = new RGBELoader();
-        let phone: THREE.Group;
 
         // Adjusted from example https://github.com/mrdoob/three.js/blob/master/examples/webgl_loader_gltf.html
         // Bloom pass https://github.com/mrdoob/three.js/blob/master/examples/webgl_postprocessing_unreal_bloom.html
@@ -81,7 +82,7 @@ export default function Home() {
                 gltf.scene.rotateX(-Math.PI / 12);
 
                 scene.add(gltf.scene);
-                phone = gltf.scene;
+                phoneRef.current = gltf.scene;
             });
         });
 
@@ -95,10 +96,10 @@ export default function Home() {
         function renderLoop() {
             let elapsedTime = clock.getDelta();
 
-            if (phone) {
-                // phone.rotateY(0.5 * elapsedTime);
-                // phone.rotateX(0.1 * elapsedTime);
-            }
+            // if (phoneRef.current) {
+            // phoneRef.current.rotateY(0.5 * elapsedTime);
+            // phoneRef.current.rotateX(0.1 * elapsedTime);
+            // }
 
             // renderer.render(scene, camera);
             composer.render();
@@ -106,11 +107,11 @@ export default function Home() {
         }
 
         function onMouseMove(ev: MouseEvent) {
-            if (!phone) return;
-            let xPercent = ev.clientX / window.innerWidth;
-            let yPercent = ev.clientY / window.innerHeight;
-            phone.rotation.x = Math.PI / 4 + (yPercent * Math.PI) / 2 + Math.PI / 2;
-            phone.rotation.y = Math.PI / 4 - (xPercent * Math.PI) / 2;
+            if (!phoneRef.current || !mouseAnimationRef.current) return;
+            let xPercent = ev.clientX / window.innerWidth + 0.2;
+            let yPercent = ev.clientY / window.innerHeight + 0.2;
+            phoneRef.current.rotation.x = Math.PI / 4 + (yPercent * Math.PI) / 2 + Math.PI / 2;
+            phoneRef.current.rotation.y = Math.PI / 4 - (xPercent * Math.PI) / 2;
             // phone.rotation.y -= ev.movementX * 0.001;
             // phone.rotation.x += ev.movementY * 0.001;
         }
@@ -133,15 +134,20 @@ export default function Home() {
         }
 
         async function next() {
-            gsap.to(canvasRef.current, { opacity: 0, duration: 0.5, x: -800, scale: 0.1, ease: Expo.easeInOut }).then(() =>
-                gsap.fromTo(
-                    canvasRef.current,
-                    { opacity: 0, duration: 2, x: 200, scale: 0.1, ease: Expo.easeInOut },
-                    { opacity: 1, duration: 2, x: 0, scale: 1, ease: Expo.easeInOut }
-                )
-            );
-            gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeInOut }).then(() =>
-                gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeInOut })
+            // Animate phone
+            mouseAnimationRef.current = false;
+            gsap.to(phoneRef.current!.position, { x: -1, duration: 1, ease: Expo.easeIn });
+            gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then(() => {
+                gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
+                gsap.fromTo(phoneRef.current!.position, { x: 0.2 }, { x: -0.2, duration: 1, ease: Expo.easeOut });
+                gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
+                    mouseAnimationRef.current = true;
+                });
+            });
+
+            // Animate text
+            gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeIn }).then(() =>
+                gsap.fromTo(textRef.current, { opacity: 0, duration: 1, x: 100 }, { opacity: 1, duration: 1, x: 0, ease: Expo.easeOut })
             );
         }
 
