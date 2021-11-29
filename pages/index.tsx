@@ -5,6 +5,10 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
+import { BloomPass } from "three/examples/jsm/postprocessing/BloomPass";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -59,6 +63,7 @@ export default function Home() {
         let phone: THREE.Group;
 
         // Adjusted from example https://github.com/mrdoob/three.js/blob/master/examples/webgl_loader_gltf.html
+        // Bloom pass https://github.com/mrdoob/three.js/blob/master/examples/webgl_postprocessing_unreal_bloom.html
         // Texture from https://polyhaven.com/a/studio_small_09
         rgbeLoader.setPath("/");
         rgbeLoader.load("studio_small_09_4k.hdr", (texture) => {
@@ -77,6 +82,11 @@ export default function Home() {
             });
         });
 
+        let composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        let bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.05, 20, 0.5);
+        composer.addPass(bloom);
+
         let clock = new THREE.Clock();
 
         function renderLoop() {
@@ -87,7 +97,8 @@ export default function Home() {
                 phone.rotateX(0.1 * elapsedTime);
             }
 
-            renderer.render(scene, camera);
+            // renderer.render(scene, camera);
+            composer.render();
             window.requestAnimationFrame(renderLoop);
         }
 
@@ -117,7 +128,7 @@ export default function Home() {
                     <h1 className="font-bold text-2xl leading-3">weboot</h1>
                     <p className="opacity-50 text-lg">we solve digital challenges</p>
                 </nav>
-                <div className="overflow-x-hidden" style={{ position: "absolute", top: 0, left: 0, width: "100%" }}>
+                <div className="overflow-x-hidden" style={{ position: "absolute", top: 0, left: 0, width: "100%", pointerEvents: "none" }}>
                     <canvas ref={canvasRef} />
                 </div>
             </div>
