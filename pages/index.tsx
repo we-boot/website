@@ -13,22 +13,23 @@ export default function Home() {
         console.log("render canvas");
         let canvas = canvasRef.current!;
 
-        const scene = new THREE.Scene();
+        let scene = new THREE.Scene();
 
         let windowHeight = window.innerHeight,
             windowWidth = window.innerWidth;
 
-        const renderer = new THREE.WebGLRenderer({
+        let renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             alpha: true,
+            antialias: true,
         });
         renderer.setSize(windowWidth, windowHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        const camera = new THREE.PerspectiveCamera(75, windowWidth / windowHeight, 0.1, 100);
+        let camera = new THREE.PerspectiveCamera(75, windowWidth / windowHeight, 0.1, 100);
         camera.position.x = 0;
         camera.position.y = 0;
-        camera.position.z = 0.5;
+        camera.position.z = 0.4;
         scene.add(camera);
 
         window.addEventListener("resize", () => {
@@ -45,45 +46,52 @@ export default function Home() {
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         });
 
-        const clock = new THREE.Clock();
+        let ambientLight = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(ambientLight);
+        let pointLight = new THREE.PointLight(0x300078, 2);
+        pointLight.position.x = 1;
+        pointLight.position.y = 3;
+        pointLight.position.z = 2;
+        scene.add(pointLight);
+
+        console.log("loading environment texture");
+        let rgbeLoader = new RGBELoader();
+        let phone: THREE.Group;
+
+        // Adjusted from example https://github.com/mrdoob/three.js/blob/master/examples/webgl_loader_gltf.html
+        // Texture from https://polyhaven.com/a/studio_small_09
+        rgbeLoader.setPath("/");
+        rgbeLoader.load("studio_small_09_4k.hdr", (texture) => {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            scene.environment = texture;
+
+            console.log("loading model");
+            let gltfLoader = new GLTFLoader();
+            gltfLoader.load("phone.gltf", (gltf) => {
+                gltf.scene.translateX(-0.2);
+                gltf.scene.rotateY(Math.PI);
+                gltf.scene.rotateX(-Math.PI / 12);
+
+                scene.add(gltf.scene);
+                phone = gltf.scene;
+            });
+        });
+
+        let clock = new THREE.Clock();
 
         function renderLoop() {
-            const elapsedTime = clock.getElapsedTime();
+            let elapsedTime = clock.getDelta();
 
-            // Update objects
-            // sphere.rotation.y = 0.5 * elapsedTime;
+            if (phone) {
+                phone.rotateY(0.5 * elapsedTime);
+                phone.rotateX(0.1 * elapsedTime);
+            }
 
             renderer.render(scene, camera);
             window.requestAnimationFrame(renderLoop);
         }
 
         renderLoop();
-
-        const pointLight = new THREE.AmbientLight(0xffffff, 1);
-        pointLight.position.x = 2;
-        pointLight.position.y = 3;
-        pointLight.position.z = 4;
-        scene.add(pointLight);
-
-        const rgbeLoader = new RGBELoader();
-        console.log("loading environment texture");
-
-        rgbeLoader.setPath("/");
-        rgbeLoader.load("studio_small_09_4k.hdr", (texture) => {
-            texture.mapping = THREE.EquirectangularReflectionMapping;
-            // scene.background = texture;
-            scene.environment = texture;
-
-            console.log("loaded texture");
-            // Objects
-            const gltfLoader = new GLTFLoader();
-
-            gltfLoader.load("phone.gltf", (gltf) => {
-                scene.add(gltf.scene);
-                // gltf.scene.scale.set(1.2, 1.2, 1.2);
-            });
-        });
-        // rgbeLoader.load()
     }
 
     useEffect(() => {
@@ -109,11 +117,8 @@ export default function Home() {
                     <h1 className="font-bold text-2xl leading-3">weboot</h1>
                     <p className="opacity-50 text-lg">we solve digital challenges</p>
                 </nav>
-                <div className="flex flex-grow items-center">
-                    <div className="flex-grow overflow-x-hidden">
-                        <canvas ref={canvasRef} />
-                    </div>
-                    {/* <div className="flex-grow">text here</div> */}
+                <div className="overflow-x-hidden" style={{ position: "absolute", top: 0, left: 0, width: "100%" }}>
+                    <canvas ref={canvasRef} />
                 </div>
             </div>
             {/* <div>next page here</div> */}
