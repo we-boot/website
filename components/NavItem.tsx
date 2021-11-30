@@ -20,7 +20,9 @@ export function NavBar() {
 
 export function NavItem(props: React.LiHTMLAttributes<HTMLLIElement>) {
     return (
-        <li {...props} className="bg-white bg-opacity-20 py-2 px-3 rounded-lg opacity-80 font-bold text-sm hover:bg-opacity-30 cursor-pointer mx-1.5">
+        <li
+            {...props}
+            className="bg-white hidden lg:block bg-opacity-20 py-2 px-3 rounded-lg opacity-80 font-bold text-sm hover:bg-opacity-30 cursor-pointer mx-1.5">
             {props.children}
         </li>
     );

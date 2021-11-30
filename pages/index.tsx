@@ -13,7 +13,7 @@ import gsap, { Expo, Power0 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { NavBar } from "../components/NavItem";
-import { TextureLoader } from "three";
+import { Mapping, TextureLoader } from "three";
 
 type SpotlightItem = {
     imageUrl: string;
@@ -55,6 +55,7 @@ export default function Home() {
         if (!spotlight.texture) {
             let textureLoader = new TextureLoader();
             spotlight.texture = await textureLoader.loadAsync(spotlight.imageUrl);
+            // spotlight.texture.minFilter = THREE.NearestFilter;
             spotlight.texture.flipY = false;
         }
 
@@ -273,16 +274,16 @@ export default function Home() {
                     backgroundSize: "100vw 101vh",
                 }}>
                 <NavBar />
-                <div className="overflow-x-hidden absolute top-0 left-0 w-full h-full flex">
-                    <canvas className="origin-center w-1/2 flex-shrink pointer-events-none" ref={canvasRef} />
-
-                    <div className=" flex items-center w-1/2 flex-shrink">
-                        <div className="m-20 text-4xl font-bold text-right ">
+                <div className="overflow-x-hidden absolute top-0 left-0 w-screen h-screen flex flex-col lg:flex-row pointer-events-none">
+                    <canvas className="origin-center h-2/3 lg:h-full w-full lg:w-1/2 flex-shrink" ref={canvasRef} />
+                    <div className="flex justify-center lg:items-center h-1/3 lg:h-full w-full lg:w-1/2 flex-shrink">
+                        <div className="text-xl sm:text-2xl lg:text-4xl font-bold text-center lg:text-right ">
                             <p>We build professional grade</p>
                             <p ref={textRef}></p>
                         </div>
                     </div>
                 </div>
+
                 <div className="mt-auto flex justify-center">
                     <div
                         className="p-10 flex items-center flex-col opacity-50"
