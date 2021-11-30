@@ -298,8 +298,8 @@ export default function Home() {
                 className="w-full text-white"
                 style={{
                     // background: "url(/gradient2.png)",
+                    // backgroundSize: "cover",
                     background: "#111",
-                    backgroundSize: "100vw 101vh",
                 }}>
                 <div className="flex items-center flex-col p-10">
                     <p className=" text-4xl font-bold">How we work</p>
@@ -309,18 +309,24 @@ export default function Home() {
                 <div className="flex justify-center">
                     <StepsGrid />
                 </div>
-
-                {/* <div className="p-10 rounded-3xl m-10 inline-flex" style={{ background: "#ffffff11" }}>
-                    <img src="/Saly-26.png" style={{ height: "150px" }} />
-                    <div className="ml-10">
-                        <h2 className="opacity-50">Step 1: pitch</h2>
-                        <div className="font-bold text-2xl">
-                            <p className="">Tell us your problem or idea</p>
-                            <p className="">we’ll let you know what’s possible</p>
-                        </div>
-                    </div>
-                </div> */}
             </div>
+            <div className="w-full h-screen">why us</div>
+            <div className="w-full h-screen">our work</div>
+            <div className="w-full h-screen">about us</div>
+            <footer className="">
+                <div>
+                    <p>
+                        Website by weboot, <a href="https://github.com/we-boot/website">source on GitHub</a>
+                    </p>
+                    <a href="mailto:stijn.rogiest@gmail.com">
+                        <p>
+                            stijn.rogiest<span>@</span>gmail.com
+                        </p>
+                    </a>
+                    <p>KVK 80384781</p>
+                    <p>weboot is a registered company in the chamber of commerce (Kamer Van Koophandel) of The Netherlands.</p>
+                </div>
+            </footer>
         </div>
     );
 }
