@@ -6,10 +6,21 @@ import React from "react";
 function StepIndicator(props: { children: React.ReactNode; hideStick?: boolean }) {
     return (
         <div className="flex flex-col items-center">
-            <div className="font-bold text-3xl bg-white bg-opacity-20 rounded-full w-14 h-14 flex items-center justify-center p-4">
+            <div
+                className="font-bold text-3xl  rounded-full w-14 h-14 flex items-center justify-center p-4"
+                style={{ backgroundAttachment: "fixed", backgroundImage: "url(/fill.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 {props.children}
             </div>
-            {!props.hideStick && <div className="w-3 flex-grow bg-white bg-opacity-20"></div>}
+            {!props.hideStick && (
+                <div
+                    className="w-3 flex-grow "
+                    style={{
+                        backgroundAttachment: "fixed",
+                        backgroundImage: "url(/fill.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                    }}></div>
+            )}
         </div>
     );
 }
@@ -28,7 +39,7 @@ export function StepsGrid() {
                 <h2 className="text-xl font-bold">
                     <span className="text-white opacity-50">1</span> Your problem or idea
                 </h2>
-                <p className="opacity-50  ">Tell us your idea or problem that you want us to solve.</p>
+                <p className="opacity-50">Tell us your idea or problem that you want us to solve.</p>
                 <div className="mt-4">
                     <textarea className="border-white rounded-lg border-opacity-20 text-white border appearance-none bg-transparent w-full h-32"></textarea>
                     <div className="flex flex-col items-end mt-2">
