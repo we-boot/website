@@ -295,7 +295,7 @@ export default function Home() {
                 </div>
             </div>
             <div
-                className="h-screen w-full text-white"
+                className="w-full text-white"
                 style={{
                     // background: "url(/gradient2.png)",
                     background: "#111",
