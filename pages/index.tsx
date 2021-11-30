@@ -111,39 +111,38 @@ export default function Home() {
     }
 
     function renderCanvas() {
-        console.log("render canvas");
         let canvas = canvasRef.current!;
 
-        let scene = new THREE.Scene();
+        let canvasRect = canvas.getBoundingClientRect();
+        console.log("canvas size", canvasRect.width, canvasRect.height);
 
-        let windowHeight = window.innerHeight,
-            windowWidth = window.innerWidth / 2;
+        let scene = new THREE.Scene();
 
         let renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             alpha: true,
             antialias: true,
         });
-        renderer.setSize(windowWidth, windowHeight);
+        renderer.setSize(canvasRect.width, canvasRect.height, false);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        let camera = new THREE.PerspectiveCamera(75, windowWidth / windowHeight, 0.1, 100);
+        let camera = new THREE.PerspectiveCamera(75, canvasRect.width / canvasRect.height, 0.1, 100);
         camera.position.x = 0;
         camera.position.y = 0;
         camera.position.z = 0.5;
         scene.add(camera);
 
         window.addEventListener("resize", () => {
-            // Update sizes
-            windowWidth = window.innerWidth / 2;
-            windowHeight = window.innerHeight;
+            let canvas = canvasRef.current!;
+            let newCanvasRect = canvas.getBoundingClientRect();
+            console.log("new canvas size", newCanvasRect.width, newCanvasRect.height);
 
             // Update camera
-            camera.aspect = windowWidth / windowHeight;
+            camera.aspect = newCanvasRect.width / newCanvasRect.height;
             camera.updateProjectionMatrix();
 
             // Update renderer
-            renderer.setSize(windowWidth, windowHeight);
+            renderer.setSize(newCanvasRect.width, newCanvasRect.height, false);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         });
 
@@ -218,8 +217,8 @@ export default function Home() {
 
         let composer = new EffectComposer(renderer);
         composer.addPass(new RenderPass(scene, camera));
-        let bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.05, 20, 0.02);
-        composer.addPass(bloom);
+        // let bloom = new UnrealBloomPass(new THREE.Vector2(canvasRect.width, canvasRect.height), 0.05, 20, 0.02);
+        // composer.addPass(bloom);
 
         let clock = new THREE.Clock();
 
@@ -274,11 +273,14 @@ export default function Home() {
                     backgroundSize: "100vw 101vh",
                 }}>
                 <NavBar />
-                <div className="overflow-x-hidden absolute top-0 left-0 w-full h-full flex flex-row items-center pointer-events-none">
-                    <canvas className="origin-center" ref={canvasRef} />
-                    <div className="m-20 text-4xl font-bold text-right">
-                        <p>We build professional grade</p>
-                        <p ref={textRef}></p>
+                <div className="overflow-x-hidden absolute top-0 left-0 w-full h-full flex">
+                    <canvas className="origin-center w-1/2 flex-shrink pointer-events-none" ref={canvasRef} />
+
+                    <div className=" flex items-center w-1/2 flex-shrink">
+                        <div className="m-20 text-4xl font-bold text-right ">
+                            <p>We build professional grade</p>
+                            <p ref={textRef}></p>
+                        </div>
                     </div>
                 </div>
                 <div className="mt-auto flex justify-center">
