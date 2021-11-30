@@ -11,9 +11,10 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import gsap, { Expo, Power0 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { NavBar } from "../components/NavItem";
 import { Mapping, TextureLoader } from "three";
+import { StepsGrid } from "../components/StepsGrid";
 
 type SpotlightItem = {
     imageUrl: string;
@@ -305,7 +306,11 @@ export default function Home() {
                     <p className="text-2xl opacity-50 mt-4">Your solution in 4 steps</p>
                 </div>
 
-                <div className="p-10 rounded-3xl m-10 inline-flex" style={{ background: "#ffffff11" }}>
+                <div className="flex justify-center">
+                    <StepsGrid />
+                </div>
+
+                {/* <div className="p-10 rounded-3xl m-10 inline-flex" style={{ background: "#ffffff11" }}>
                     <img src="/Saly-26.png" style={{ height: "150px" }} />
                     <div className="ml-10">
                         <h2 className="opacity-50">Step 1: pitch</h2>
@@ -314,7 +319,7 @@ export default function Home() {
                             <p className="">we’ll let you know what’s possible</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
