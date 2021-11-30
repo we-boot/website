@@ -13,7 +13,7 @@ function StepIndicator(props: { children: React.ReactNode; hideStick?: boolean }
             </div>
             {!props.hideStick && (
                 <div
-                    className="w-3 flex-grow "
+                    className="w-3 flex-grow transform scale-y-105"
                     style={{
                         backgroundAttachment: "fixed",
                         backgroundImage: "url(/fill.png)",
