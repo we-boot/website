@@ -61,26 +61,45 @@ const TECH_ICONS = [
 ];
 
 function TechnologyIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
-    return <span {...props} className="inline-block m-2 h-10 w-10"></span>;
+    return <span {...props} className="inline-block m-4 h-40 w-40 opacity-10"></span>;
 }
 
-export function QualityGrid() {
+export function TechologyTrip() {
     const techonologiesRef = useRef<HTMLDivElement>(null);
     const technologyTween = useRef<gsap.core.Tween>();
-    const clockRef = useRef<HTMLDivElement>(null);
-
+    const ICON_SIZE = 192;
     useEffect(() => {
         technologyTween.current = gsap
             .fromTo(
                 techonologiesRef.current,
-                { x: -56, duration: TECH_ICONS.length + 1, ease: Linear.easeNone },
-                { x: -56 * (TECH_ICONS.length + 1), duration: TECH_ICONS.length + 1, ease: Linear.easeNone }
+                { x: -ICON_SIZE, duration: TECH_ICONS.length + 1, ease: Linear.easeNone },
+                { x: -ICON_SIZE * (TECH_ICONS.length + 1), duration: TECH_ICONS.length + 1, ease: Linear.easeNone }
             )
             .repeat(-1);
 
-        let clockTween = gsap.to(clockRef.current!, { rotate: 360, duration: 16, ease: Linear.easeNone }).repeat(-1);
         return () => {
             technologyTween.current!.kill();
+        };
+    }, []);
+
+    return (
+        <div ref={techonologiesRef} className="absolute top-0 left-0 min-w-max">
+            {TECH_ICONS.map((e, i) => (
+                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
+            ))}
+            {TECH_ICONS.map((e, i) => (
+                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
+            ))}
+        </div>
+    );
+}
+
+export function QualityGrid() {
+    const clockRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        let clockTween = gsap.to(clockRef.current!, { rotate: 360, duration: 16, ease: Linear.easeNone }).repeat(-1);
+        return () => {
             clockTween.kill();
         };
     }, []);
@@ -119,23 +138,6 @@ export function QualityGrid() {
                 title="Reachable">
                 <div className="flex-grow flex justify-center mt-4 text-white text-opacity-10">
                     <FontAwesomeIcon size={"8x"} icon={faSignal} />
-                </div>
-            </QualityCard>
-            <QualityCard description="We build software using the following tech" title="Our Toolbelt">
-                <div className="flex-grow flex flex-col justify-center">
-                    <div
-                        className="relative mb-10"
-                        onMouseEnter={() => technologyTween.current!.pause()}
-                        onMouseLeave={() => technologyTween.current!.resume()}>
-                        <div ref={techonologiesRef} className="absolute top-0 left-0 min-w-max">
-                            {TECH_ICONS.map((e, i) => (
-                                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
-                            ))}
-                            {TECH_ICONS.map((e, i) => (
-                                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
-                            ))}
-                        </div>
-                    </div>
                 </div>
             </QualityCard>
         </div>
