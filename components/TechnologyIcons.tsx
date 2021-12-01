@@ -3,6 +3,8 @@ import gsap, { Linear } from "gsap";
 
 // Icons from https://devicon.dev/
 
+const ICON_SIZE = 192;
+
 const TECH_ICONS = [
     { name: "TypeScript", icon: <TypeScriptIcon /> },
     { name: "NextJS", icon: <NextJsIcon /> },
@@ -24,21 +26,22 @@ const TECH_ICONS = [
     { name: "Amazon Web Services", icon: <AWSIcon /> },
     { name: "Linux", icon: <LinuxIcon /> },
 ];
+const STRIP_SPEED = TECH_ICONS.length * 3;
 
 function TechnologyIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
     return <span {...props} className="inline-block m-4 h-40 w-40 opacity-10"></span>;
 }
 
-export function TechologyTrip() {
+export function TechologyStrip() {
     const techonologiesRef = useRef<HTMLDivElement>(null);
     const technologyTween = useRef<gsap.core.Tween>();
-    const ICON_SIZE = 192;
+
     useEffect(() => {
         technologyTween.current = gsap
             .fromTo(
                 techonologiesRef.current,
-                { x: -ICON_SIZE, duration: TECH_ICONS.length + 1, ease: Linear.easeNone },
-                { x: -ICON_SIZE * (TECH_ICONS.length + 1), duration: TECH_ICONS.length + 1, ease: Linear.easeNone }
+                { x: -ICON_SIZE, duration: STRIP_SPEED, ease: Linear.easeNone },
+                { x: -ICON_SIZE * (TECH_ICONS.length + 1), duration: STRIP_SPEED, ease: Linear.easeNone }
             )
             .repeat(-1);
 
@@ -48,7 +51,11 @@ export function TechologyTrip() {
     }, []);
 
     return (
-        <div ref={techonologiesRef} className="absolute top-0 left-0 min-w-max">
+        <div
+            ref={techonologiesRef}
+            className="absolute top-0 left-0 min-w-max"
+            onMouseEnter={() => technologyTween.current!.pause()}
+            onMouseLeave={() => technologyTween.current!.resume()}>
             {TECH_ICONS.map((e, i) => (
                 <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
             ))}

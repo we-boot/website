@@ -17,7 +17,7 @@ import { Mapping, TextureLoader } from "three";
 import { StepsGrid } from "../components/StepsGrid";
 import { QualityGrid } from "../components/QualityGrid";
 import { Footer } from "../components/Footer";
-import { TechologyTrip } from "../components/TechnologyIcons";
+import { TechologyStrip } from "../components/TechnologyIcons";
 
 type SpotlightItem = {
     imageUrl: string;
@@ -343,7 +343,7 @@ export default function Home() {
                     <QualityGrid />
                 </div>
                 <div className="relative w-full overflow-x-hidden mt-auto h-60">
-                    <TechologyTrip />
+                    <TechologyStrip />
                 </div>
             </div>
             <div className="w-full h-screen" style={{ background: "#111" }}>
