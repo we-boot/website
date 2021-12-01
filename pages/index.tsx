@@ -24,6 +24,8 @@ type SpotlightItem = {
     texture?: THREE.Texture;
 };
 
+const MONITOR_SCALE = 0.95;
+const PHONE_SCALE = 1.2;
 const SPOTLIGHT: SpotlightItem[] = [
     {
         type: "phone",
@@ -67,22 +69,32 @@ export default function Home() {
             phoneScreenRef.current!.needsUpdate = true;
 
             // Animate model
-            gsap.fromTo(phoneRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
+            gsap.fromTo(
+                phoneRef.current!.scale,
+                { x: 0, y: 0, z: 0 },
+                { x: PHONE_SCALE, y: PHONE_SCALE, z: PHONE_SCALE, duration: 0.5, ease: Power0.easeNone }
+            );
             gsap.fromTo(phoneRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
             gsap.to(phoneRef.current!.rotation, { y: 0, duration: 2, ease: Expo.easeOut }).then(() => {
                 mouseAnimationRef.current = true;
             });
+            phoneRef.current!.visible = true;
         } else if (spotlight.type === "computer") {
             monitorScreenRef.current!.emissiveMap = spotlight.texture!;
             monitorScreenRef.current!.emissiveMap.needsUpdate = true;
             monitorScreenRef.current!.needsUpdate = true;
 
             // Animate model
-            gsap.fromTo(monitorRef.current!.scale, { x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1, duration: 0.5, ease: Power0.easeNone });
+            gsap.fromTo(
+                monitorRef.current!.scale,
+                { x: 0, y: 0, z: 0 },
+                { x: MONITOR_SCALE, y: MONITOR_SCALE, z: MONITOR_SCALE, duration: 0.5, ease: Power0.easeNone }
+            );
             gsap.fromTo(monitorRef.current!.position, { x: 0.5 }, { x: 0, duration: 1, ease: Expo.easeOut });
             gsap.to(monitorRef.current!.rotation, { y: -Math.PI / 2, duration: 2, ease: Expo.easeOut }).then(() => {
                 mouseAnimationRef.current = true;
             });
+            monitorRef.current!.visible = true;
         }
 
         // Animate text
@@ -102,9 +114,11 @@ export default function Home() {
         if (currentSpotlight.type === "phone") {
             gsap.to(phoneRef.current!.position, { x: -0.5, duration: 1, ease: Expo.easeIn });
             await gsap.to(phoneRef.current!.rotation, { y: -Math.PI * 2, duration: 1, ease: Expo.easeIn }).then();
+            phoneRef.current!.visible = false;
         } else if (currentSpotlight.type === "computer") {
             gsap.to(monitorRef.current!.position, { x: -2, duration: 1, ease: Expo.easeIn });
             await gsap.to(monitorRef.current!.rotation, { y: Math.PI, duration: 1, ease: Expo.easeIn }).then();
+            monitorRef.current!.visible = false;
         }
 
         if (++spotlightIndexRef.current >= SPOTLIGHT.length) {
@@ -189,7 +203,7 @@ export default function Home() {
                         }
                     }
                 });
-
+                gltf.scene.visible = false;
                 scene.add(gltf.scene);
                 phoneRef.current = gltf.scene;
                 console.log("done loading phone model");
@@ -197,6 +211,7 @@ export default function Home() {
             });
 
             gltfLoader.load("monitor.gltf", (gltf) => {
+                // gltf.scene.scale.set(0.8, 0.8, 0.8);
                 gltf.scene.translateX(-0.5);
 
                 // Find screen material
@@ -212,6 +227,7 @@ export default function Home() {
                     }
                 });
 
+                gltf.scene.visible = false;
                 scene.add(gltf.scene);
                 monitorRef.current = gltf.scene;
                 console.log("done loading monitor model");

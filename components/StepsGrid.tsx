@@ -26,7 +26,7 @@ function StepIndicator(props: { children: React.ReactNode; hideStick?: boolean }
 }
 
 function StepContainer(props: { children: React.ReactNode }) {
-    return <div className="py-3 pl-12 mb-20">{props.children}</div>;
+    return <div className="py-3 pl-6 md:pl-12 mb-20">{props.children}</div>;
 }
 
 export function StepsGrid() {
