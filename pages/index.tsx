@@ -11,7 +11,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import gsap, { Expo, Power0 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faEnvelope, faPaperPlane, faStore, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 import { NavBar } from "../components/NavItem";
 import { Mapping, TextureLoader } from "three";
 import { StepsGrid } from "../components/StepsGrid";
@@ -323,20 +323,30 @@ export default function Home() {
                     <QualityGrid />
                 </div>
             </div>
-            <div className="w-full h-screen">our work</div>
-            <div className="w-full h-screen">about us</div>
-            <footer className="">
+            <div className="w-full h-screen" style={{ background: "#111" }}>
+                our work
+            </div>
+            <div className="w-full h-screen" style={{ background: "#111" }}>
+                about us
+            </div>
+            <footer className="pt-48 px-20 pb-20 text-white" style={{ background: "url(/layered-steps.svg)", backgroundSize: "stretch" }}>
                 <div>
-                    <p>
-                        Website by weboot, <a href="https://github.com/we-boot/website">source on GitHub</a>
-                    </p>
+                    <h2 className="text-2xl font-bold text-white">weboot</h2>
+
                     <a href="mailto:stijn.rogiest@gmail.com">
-                        <p>
-                            stijn.rogiest<span>@</span>gmail.com
+                        <p className="opacity-50">
+                            <FontAwesomeIcon icon={faEnvelope} /> stijn.rogiest<span>@</span>gmail.com
                         </p>
                     </a>
-                    <p>KVK 80384781</p>
-                    <p>weboot is a registered company in the chamber of commerce (Kamer Van Koophandel) of The Netherlands.</p>
+                    <p className="opacity-50 mt-2">KVK 80384781</p>
+                    <p className="opacity-50">weboot is a registered company in the chamber of commerce (Kamer Van Koophandel) of The Netherlands.</p>
+
+                    <p className="opacity-50 mt-2">
+                        Website by weboot,{" "}
+                        <span className="underline">
+                            <a href="https://github.com/we-boot/website">source on GitHub</a>
+                        </span>
+                    </p>
                 </div>
             </footer>
         </div>
