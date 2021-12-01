@@ -15,6 +15,7 @@ import { faChevronDown, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { NavBar } from "../components/NavItem";
 import { Mapping, TextureLoader } from "three";
 import { StepsGrid } from "../components/StepsGrid";
+import { QualityGrid } from "../components/QualityGrid";
 
 type SpotlightItem = {
     imageUrl: string;
@@ -310,7 +311,17 @@ export default function Home() {
                     <StepsGrid />
                 </div>
             </div>
-            <div className="w-full h-screen">why us</div>
+            {/* style={{ background: "url(/polygrid.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat" }} */}
+            {/* boxShadow: "0 -10px 40px 0 #040404" */}
+            <div className="w-full text-white border-t border-black" style={{ background: "#181818" }}>
+                <div className="flex items-center flex-col p-10">
+                    <p className=" text-4xl font-bold">Why us</p>
+                    <p className="text-2xl opacity-50 mt-4">Our qualities</p>
+                </div>
+                <div className="flex justify-center">
+                    <QualityGrid />
+                </div>
+            </div>
             <div className="w-full h-screen">our work</div>
             <div className="w-full h-screen">about us</div>
             <footer className="">
