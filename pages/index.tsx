@@ -296,7 +296,7 @@ export default function Home() {
                 </div>
             </div>
             <div
-                className="w-full text-white"
+                className="w-full text-white min-h-screen"
                 style={{
                     // background: "url(/gradient2.png)",
                     // backgroundSize: "cover",
@@ -314,7 +314,7 @@ export default function Home() {
             {/* style={{ background: "url(/polygrid.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat" }} */}
             {/* boxShadow: "0 -10px 40px 0 #040404" */}
             {/* style={{ background: "#181818" }} */}
-            <div className="w-full text-white border-t border-black" style={{ background: "url(/dot.png)", backgroundRepeat: "repeat" }}>
+            <div className="w-full min-h-screen text-white border-t border-black" style={{ background: "url(/dot.png)", backgroundRepeat: "repeat" }}>
                 <div className="flex items-center flex-col p-10">
                     <p className=" text-4xl font-bold">Why us</p>
                     <p className="text-2xl opacity-50 mt-4">Our qualities</p>
