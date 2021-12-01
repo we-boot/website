@@ -15,8 +15,9 @@ import { faChevronDown, faEnvelope, faPaperPlane, faStore, faTicketAlt } from "@
 import { NavBar } from "../components/NavItem";
 import { Mapping, TextureLoader } from "three";
 import { StepsGrid } from "../components/StepsGrid";
-import { QualityGrid, TechologyTrip } from "../components/QualityGrid";
+import { QualityGrid } from "../components/QualityGrid";
 import { Footer } from "../components/Footer";
+import { TechologyTrip } from "../components/TechnologyIcons";
 
 type SpotlightItem = {
     imageUrl: string;

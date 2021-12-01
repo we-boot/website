@@ -1,4 +1,63 @@
-// From https://devicon.dev/
+import { useRef, useEffect } from "react";
+import gsap, { Linear } from "gsap";
+
+// Icons from https://devicon.dev/
+
+const TECH_ICONS = [
+    { name: "TypeScript", icon: <TypeScriptIcon /> },
+    { name: "NextJS", icon: <NextJsIcon /> },
+    { name: "PostgreSQL", icon: <PostgresIcon /> },
+    { name: "NodeJS", icon: <NodeJSIcon /> },
+    { name: "React", icon: <ReactIcon /> },
+    { name: "Docker", icon: <DockerIcon /> },
+    { name: "Nginx", icon: <NginxIcon /> },
+    { name: "C", icon: <CIcon /> },
+    { name: "C#", icon: <CSharpIcon /> },
+    { name: "Javascript", icon: <JavascriptIcon /> },
+    { name: "Tailwind CSS", icon: <TailwindCSSIcon /> },
+    { name: "Electron", icon: <ElecronIcon /> },
+    { name: "Figma", icon: <FigmaIcon /> },
+    { name: "Git", icon: <GitIcon /> },
+    { name: "Socket.io", icon: <SocketIOIcon /> },
+    { name: "THREE.js", icon: <ThreeJSIcon /> },
+    { name: "Unity", icon: <UnityIcon /> },
+    { name: "Amazon Web Services", icon: <AWSIcon /> },
+    { name: "Linux", icon: <LinuxIcon /> },
+];
+
+function TechnologyIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
+    return <span {...props} className="inline-block m-4 h-40 w-40 opacity-10"></span>;
+}
+
+export function TechologyTrip() {
+    const techonologiesRef = useRef<HTMLDivElement>(null);
+    const technologyTween = useRef<gsap.core.Tween>();
+    const ICON_SIZE = 192;
+    useEffect(() => {
+        technologyTween.current = gsap
+            .fromTo(
+                techonologiesRef.current,
+                { x: -ICON_SIZE, duration: TECH_ICONS.length + 1, ease: Linear.easeNone },
+                { x: -ICON_SIZE * (TECH_ICONS.length + 1), duration: TECH_ICONS.length + 1, ease: Linear.easeNone }
+            )
+            .repeat(-1);
+
+        return () => {
+            technologyTween.current!.kill();
+        };
+    }, []);
+
+    return (
+        <div ref={techonologiesRef} className="absolute top-0 left-0 min-w-max">
+            {TECH_ICONS.map((e, i) => (
+                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
+            ))}
+            {TECH_ICONS.map((e, i) => (
+                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
+            ))}
+        </div>
+    );
+}
 
 export function TypeScriptIcon() {
     return (
