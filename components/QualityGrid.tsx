@@ -26,9 +26,10 @@ function QualityCard(props: React.HTMLAttributes<HTMLDivElement> & { title: Reac
     return (
         <div
             {...props}
-            className="relative overflow-hidden border border-black py-4 px-6 rounded-xl bg-white bg-opacity-5 hover:scale-110 hover:shadow-xl shadow-none hover:border-transparent transform transition">
+            style={{ background: "#242424" }}
+            className="relative flex flex-col overflow-hidden border border-black py-4 px-6 rounded-xl hover:scale-110 hover:shadow-xl shadow-none hover:border-transparent transform transition">
             <p className="text-center font-bold text-xl mb-2">{props.title}</p>
-            <p className="opacity-50 text-center">{props.description}</p>
+            <p className="opacity-50 text-center text-base">{props.description}</p>
             {props.children}
         </div>
     );
@@ -79,8 +80,10 @@ export function QualityGrid() {
     }, []);
 
     return (
-        <div style={{ gridTemplateColumns: "repeat(2, 300px)", gridTemplateRows: "repeat(5, 200px)" }} className="grid gap-10 ">
-            <QualityCard description="We are productivity freaks." title="Development time"></QualityCard>
+        <div style={{ gridTemplateColumns: "repeat(2, 300px)", gridTemplateRows: "repeat(5, 300px)" }} className="grid gap-10 ">
+            <QualityCard
+                description="We are productivity freaks. Software is built in one take in a matter of weeks, not months."
+                title="Development time"></QualityCard>
             <QualityCard description="Every application consists of a modern looking user interface." title="Modern"></QualityCard>
             <QualityCard description="We build software using the following tech" title="We speak">
                 <div
@@ -97,11 +100,17 @@ export function QualityGrid() {
                     </div>
                 </div>
             </QualityCard>
+            <QualityCard description="Our software runs on any device of any size, as long as it supports a web browser." title="Responsive">
+                <div className="flex justify-center flex-grow">
+                    <div className="bg-white bg-opacity-10 rounded-lg w-28 relative">
+                        <div className="bg-white bg-opacity-10 rounded-lg w-8 h-12 absolute bottom-0 left-0"></div>
+                    </div>
+                </div>
+            </QualityCard>
+            <QualityCard description="Our software updates automatically, the user won't even notice." title="Updates"></QualityCard>
             <QualityCard
-                description="Our software runs on any device of any size, as long as it supports a web browser."
-                title="Responsive"></QualityCard>
-            <QualityCard description="Our software updates automatically, the user won't even notice." title="Smooth"></QualityCard>
-            <QualityCard description="Because our software runs in the cloud, it can be reached from any location." title="Reachable"></QualityCard>
+                description="Because our software runs in the cloud, it has the possibility to be reached from any location."
+                title="Reachable"></QualityCard>
         </div>
     );
 }
