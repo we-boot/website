@@ -28,8 +28,8 @@ function QualityCard(props: React.HTMLAttributes<HTMLDivElement> & { title: Reac
     return (
         <div
             {...props}
-            style={{ background: "#242424", width: 350, height: 350 }}
-            className="m-4 relative flex flex-col overflow-hidden border border-black py-4 px-6 rounded-xl lg:hover:scale-110 lg:hover:shadow-xl shadow-none hover:border-transparent transform transition">
+            style={{ width: 350, height: 350 }}
+            className="m-4 relative bg-white bg-opacity-10 flex flex-col overflow-hidden py-4 px-6 rounded-xl lg:hover:scale-110 lg:hover:shadow-xl shadow-none hover:border-transparent transform transition">
             <p className="text-center font-bold text-2xl mb-2">{props.title}</p>
             <p className="opacity-50 text-center text-base">{props.description}</p>
             {props.children}

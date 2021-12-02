@@ -324,9 +324,10 @@ export default function Home() {
             <div
                 className="w-full text-white min-h-screen"
                 style={{
-                    // background: "url(/gradient2.png)",
+                    background: "url(/dot2.png)",
+                    backgroundRepeat: "repeat",
                     // backgroundSize: "cover",
-                    background: "#111",
+                    // background: "#111",
                 }}>
                 <div className="flex items-center flex-col p-10">
                     <p className=" text-4xl font-bold">How we work</p>
@@ -342,7 +343,7 @@ export default function Home() {
             {/* style={{ background: "#181818" }} */}
             <div
                 className="w-full flex flex-col text-white border-t border-black"
-                style={{ background: "url(/dot.png)", backgroundRepeat: "repeat" }}>
+                style={{ background: "url(/blurry-gradient-haikei4.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <div className="flex items-center flex-col p-10">
                     <p className=" text-4xl font-bold">Why us</p>
                     <p className="text-2xl opacity-50 mt-4">Our qualities</p>
@@ -350,7 +351,7 @@ export default function Home() {
                 <div className="flex justify-center">
                     <QualityGrid />
                 </div>
-                <div className="relative w-full overflow-x-hidden mt-12 h-60">
+                <div className="relative w-full overflow-x-hidden my-20 h-52 opacity-20">
                     <TechologyStrip />
                 </div>
             </div>

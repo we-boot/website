@@ -29,7 +29,7 @@ const TECH_ICONS = [
 const STRIP_SPEED = TECH_ICONS.length * 3;
 
 function TechnologyIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
-    return <span {...props} className="inline-block m-4 h-40 w-40 opacity-10"></span>;
+    return <span {...props} className="inline-block m-4 h-40 w-40"></span>;
 }
 
 export function TechologyStrip() {
