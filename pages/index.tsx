@@ -296,10 +296,11 @@ export default function Home() {
                 <NavBar />
             </div> */}
             <div
-                className="h-screen w-full flex flex-col relative text-white max-w-full overflow-x-hidden"
+                className="h-screen w-full flex flex-col relative text-white max-w-full overflow-x-hidden "
                 style={{
-                    background: "url(/gradient.png)",
-                    backgroundSize: "100vw 101vh",
+                    background: "url(/blurry-gradient-haikei1.png)",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
                 }}>
                 <NavBar />
                 <div className="overflow-x-hidden absolute top-0 left-0 w-screen h-screen flex flex-col lg:flex-row pointer-events-none">
@@ -326,8 +327,6 @@ export default function Home() {
                 style={{
                     background: "url(/dot2.png)",
                     backgroundRepeat: "repeat",
-                    // backgroundSize: "cover",
-                    // background: "#111",
                 }}>
                 <div className="flex items-center flex-col p-10">
                     <p className=" text-4xl font-bold">How we work</p>
@@ -338,11 +337,8 @@ export default function Home() {
                     <StepsGrid />
                 </div>
             </div>
-            {/* style={{ background: "url(/polygrid.png)", backgroundSize: "cover", backgroundRepeat: "no-repeat" }} */}
-            {/* boxShadow: "0 -10px 40px 0 #040404" */}
-            {/* style={{ background: "#181818" }} */}
             <div
-                className="w-full flex flex-col text-white border-t border-black"
+                className="w-full flex flex-col text-white"
                 style={{ background: "url(/blurry-gradient-haikei4.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <div className="flex items-center flex-col p-10">
                     <p className=" text-4xl font-bold">Why us</p>
@@ -356,10 +352,10 @@ export default function Home() {
                 </div>
             </div>
             <div className="w-full h-screen" style={{ background: "#111" }}>
-                our work
+                {/* our work */}
             </div>
             <div className="w-full h-screen" style={{ background: "#111" }}>
-                about us
+                {/* about us */}
             </div>
             <Footer />
         </div>

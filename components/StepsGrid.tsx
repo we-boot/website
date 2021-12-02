@@ -13,7 +13,8 @@ function StepIndicator(props: { children: React.ReactNode; hideStick?: boolean }
             </div>
             {!props.hideStick && (
                 <div
-                    className="w-3 flex-grow transform scale-y-105"
+                    // transform scale-y-105 does not work in firefox
+                    className="w-3 flex-grow"
                     style={{
                         backgroundAttachment: "fixed",
                         backgroundImage: "url(/fill.png)",
