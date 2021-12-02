@@ -287,6 +287,14 @@ export default function Home() {
 
     return (
         <div>
+            {/* <div
+                className="text-white fixed top-0 left-0 w-full z-10"
+                style={{
+                    background: "#30007888",
+                    backdropFilter: "blur(20px)",
+                }}>
+                <NavBar />
+            </div> */}
             <div
                 className="h-screen w-full flex flex-col relative text-white max-w-full overflow-x-hidden"
                 style={{
