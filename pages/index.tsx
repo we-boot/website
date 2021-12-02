@@ -297,7 +297,7 @@ export default function Home() {
                 <div className="overflow-x-hidden absolute top-0 left-0 w-screen h-screen flex flex-col lg:flex-row pointer-events-none">
                     <canvas className="origin-center h-2/3 lg:h-full w-full lg:w-1/2 flex-shrink" ref={canvasRef} />
                     <div className="flex justify-center lg:items-center h-1/3 lg:h-full w-full lg:w-1/2 flex-shrink">
-                        <div className="text-xl sm:text-2xl lg:text-4xl font-bold text-center lg:text-right ">
+                        <div className="text-xl sm:text-2xl lg:text-4xl xl:text-5xl font-bold text-center lg:text-right ">
                             <p>We build professional grade</p>
                             <p ref={textRef}></p>
                         </div>
@@ -333,7 +333,7 @@ export default function Home() {
             {/* boxShadow: "0 -10px 40px 0 #040404" */}
             {/* style={{ background: "#181818" }} */}
             <div
-                className="w-full flex flex-col min-h-screen text-white border-t border-black"
+                className="w-full flex flex-col text-white border-t border-black"
                 style={{ background: "url(/dot.png)", backgroundRepeat: "repeat" }}>
                 <div className="flex items-center flex-col p-10">
                     <p className=" text-4xl font-bold">Why us</p>
@@ -342,7 +342,7 @@ export default function Home() {
                 <div className="flex justify-center">
                     <QualityGrid />
                 </div>
-                <div className="relative w-full overflow-x-hidden mt-auto h-60">
+                <div className="relative w-full overflow-x-hidden mt-12 h-60">
                     <TechologyStrip />
                 </div>
             </div>

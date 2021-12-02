@@ -36,7 +36,7 @@ export function StepsGrid() {
                 <FontAwesomeIcon icon={faLightbulb} />
             </StepIndicator>
             <StepContainer>
-                <h2 className="text-xl font-bold">
+                <h2 className="text-2xl font-bold">
                     <span className="text-white opacity-50">1</span> Your problem or idea
                 </h2>
                 <p className="opacity-50">Tell us your idea or problem that you want us to solve.</p>
@@ -54,7 +54,7 @@ export function StepsGrid() {
                 <FontAwesomeIcon icon={faComments} />
             </StepIndicator>
             <StepContainer>
-                <h2 className="text-xl font-bold">
+                <h2 className="text-2xl font-bold">
                     <span className="text-white opacity-50">2</span> Communication is key
                 </h2>
                 <p className="opacity-50 mt-2">
@@ -66,7 +66,7 @@ export function StepsGrid() {
                 <FontAwesomeIcon icon={faHandshake} />
             </StepIndicator>
             <StepContainer>
-                <h2 className="text-xl font-bold">
+                <h2 className="text-2xl font-bold">
                     <span className="text-white opacity-50">3</span> Proposal
                 </h2>
                 <p className="opacity-50 mt-2">
@@ -78,7 +78,7 @@ export function StepsGrid() {
                 <FontAwesomeIcon icon={faCode} />
             </StepIndicator>
             <StepContainer>
-                <h2 className="text-xl font-bold">
+                <h2 className="text-2xl font-bold">
                     <span className="text-white opacity-50">4</span> Development
                 </h2>
                 <p className="opacity-50 mt-2">

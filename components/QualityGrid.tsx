@@ -28,9 +28,9 @@ function QualityCard(props: React.HTMLAttributes<HTMLDivElement> & { title: Reac
     return (
         <div
             {...props}
-            style={{ background: "#242424", width: 300, height: 300 }}
+            style={{ background: "#242424", width: 350, height: 350 }}
             className="m-4 relative flex flex-col overflow-hidden border border-black py-4 px-6 rounded-xl lg:hover:scale-110 lg:hover:shadow-xl shadow-none hover:border-transparent transform transition">
-            <p className="text-center font-bold text-xl mb-2">{props.title}</p>
+            <p className="text-center font-bold text-2xl mb-2">{props.title}</p>
             <p className="opacity-50 text-center text-base">{props.description}</p>
             {props.children}
         </div>
@@ -49,11 +49,11 @@ export function QualityGrid() {
     }, []);
 
     return (
-        <div className="flex flex-wrap max-w-9xl  justify-center">
+        <div className="flex flex-wrap max-w-9xl justify-center">
             <QualityCard
                 description="We are productivity freaks. Software is built in one take in a matter of weeks, not months."
                 title="Development time">
-                <div className="flex-grow flex justify-center mt-4">
+                <div className="flex-grow flex justify-center items-center mt-4">
                     <div className="bg-white bg-opacity-10 w-32 h-32 rounded-full relative">
                         <div
                             className=" bg-white bg-opacity-10 h-4 w-16 rounded-lg transform absolute"
@@ -64,14 +64,14 @@ export function QualityGrid() {
             </QualityCard>
             {/* <QualityCard description="Every application consists of a modern looking user interface." title="Modern"></QualityCard> */}
             <QualityCard description="Our software updates automatically, the user won't even notice." title="Updates">
-                <div className="flex-grow flex justify-center mt-4 text-white text-opacity-10">
+                <div className="flex-grow flex justify-center items-center text-white text-opacity-10">
                     <FontAwesomeIcon size={"8x"} icon={faArrowDown} />
                 </div>
             </QualityCard>
             <QualityCard
                 description="Our software has the possibility to run on any device of any size, as long as it supports a web browser."
                 title="Responsive">
-                <div className="flex justify-center flex-grow mt-4">
+                <div className="flex justify-center flex-grow my-8">
                     <div className="bg-white bg-opacity-10 rounded-lg w-28 relative">
                         <div className="bg-white bg-opacity-10 rounded-lg w-16 h-20 absolute bottom-0 left-0"></div>
                     </div>
@@ -80,7 +80,7 @@ export function QualityGrid() {
             <QualityCard
                 description="Because our software runs in the cloud, it has the possibility to be reached from any location."
                 title="Reachable">
-                <div className="flex-grow flex justify-center mt-4 text-white text-opacity-10">
+                <div className="flex-grow flex  justify-center items-center mt-4 text-white text-opacity-10">
                     <FontAwesomeIcon size={"8x"} icon={faSignal} />
                 </div>
             </QualityCard>
