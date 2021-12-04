@@ -18,6 +18,7 @@ import { StepsGrid } from "../components/StepsGrid";
 import { QualityGrid } from "../components/QualityGrid";
 import { Footer } from "../components/Footer";
 import { TechologyStrip } from "../components/TechnologyIcons";
+import { WorkScroller } from "../components/WorkScroller";
 
 type SpotlightItem = {
     imageUrl: string;
@@ -328,10 +329,10 @@ export default function Home() {
                     background: "url(/dot2.png)",
                     backgroundRepeat: "repeat",
                 }}>
-                <div className="flex items-center flex-col p-10">
-                    <p className=" text-4xl font-bold">How we work</p>
+                <header className="flex items-center flex-col p-10">
+                    <h2 className=" text-4xl font-bold">How we work</h2>
                     <p className="text-2xl opacity-50 mt-4">Your solution in 4 steps</p>
-                </div>
+                </header>
 
                 <div className="flex justify-center">
                     <StepsGrid />
@@ -340,19 +341,27 @@ export default function Home() {
             <div
                 className="w-full flex flex-col text-white"
                 style={{ background: "url(/blurry-gradient-haikei4.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-                <div className="flex items-center flex-col p-10">
-                    <p className=" text-4xl font-bold">Why us</p>
+                <header className="flex items-center flex-col p-10">
+                    <h2 className=" text-4xl font-bold">Why us</h2>
                     <p className="text-2xl opacity-50 mt-4">Our qualities</p>
-                </div>
+                </header>
                 <div className="flex justify-center">
                     <QualityGrid />
                 </div>
+                <div className="text-center">TODO FAQ here</div>
                 <div className="relative w-full overflow-x-hidden my-20 h-52 opacity-20">
                     <TechologyStrip />
                 </div>
             </div>
+            <div className="w-full h-screen" style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat" }}>
+                <header className="flex items-center flex-col p-10 text-white">
+                    <h2 className=" text-4xl font-bold">Our solutions</h2>
+                    <p className="text-2xl opacity-50 mt-4">Our creations</p>
+                </header>
+                {/* <WorkScroller /> */}
+            </div>
             <div className="w-full h-screen" style={{ background: "#111" }}>
-                {/* our work */}
+                {/* questions and answers */}
             </div>
             <div className="w-full h-screen" style={{ background: "#111" }}>
                 {/* about us */}
