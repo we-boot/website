@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { GLTFLoader, GLTFParser } from "three/examples/jsm/loaders/GLTFLoader";
@@ -347,7 +347,21 @@ export default function Home() {
                 <div className="flex justify-center">
                     <QualityGrid />
                 </div>
-                <div className="text-center">TODO FAQ here</div>
+                <div className="h-60">
+                    <p className="text-2xl text-center opacity-50 mt-4">Questions and Answers</p>
+                    <div className="flex items-start justify-center flex-wrap">
+                        <QuestionAnswerCard question="Hoe lang duurt ontwikkeling?" answer="Ontwikkelingstijd ligt tussen de 1 en 4 weken." />
+                        <QuestionAnswerCard question="Hoe verloopt een meeting?" answer="We meeten via een zoom meeting." />
+                        <QuestionAnswerCard
+                            question="Hoeveel kost dit?"
+                            answer="Kleine projecten kosten 2.000, grotere kunnen meer dan 10.000 kosten."
+                        />
+                        <QuestionAnswerCard
+                            question="Hoe worden kosten berekend?"
+                            answer="Door het aantal interactieve elementen in je software op te tellen."
+                        />
+                    </div>
+                </div>
                 <div className="relative w-full overflow-x-hidden my-20 h-52 opacity-20">
                     <TechologyStrip />
                 </div>
@@ -380,6 +394,23 @@ export default function Home() {
     );
 }
 
+function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.ReactNode }) {
+    const [shown, setShown] = useState(false);
+    return (
+        <div className="rounded-lg overflow-hidden m-4 w-96">
+            <div className="flex items-center bg-white bg-opacity-10 hover:bg-opacity-20 px-4 py-3" onClick={() => setShown(!shown)}>
+                <p className="font-bold text-white text-lg flex-grow whitespace-nowrap">{props.question}</p>
+                <span className="opacity-50 scale-150 transform ml-6 mr-2 mt-1">
+                    <FontAwesomeIcon icon={faChevronDown} style={{ transform: shown ? "rotate(180deg)" : "rotate(0deg)", transition: "200ms" }} />
+                </span>
+            </div>
+            <div style={{ maxHeight: shown ? "20vh" : "0px", transition: "400ms" }} className="overflow-hidden">
+                <div className="px-4 py-3 bg-white bg-opacity-10">{props.answer}</div>
+            </div>
+        </div>
+    );
+}
+
 function WorkCard() {
     return (
         <div className="text-white flex-grow mb-8 p-8 hover:bg-white hover:bg-opacity-10 rounded-xl">
@@ -388,7 +419,7 @@ function WorkCard() {
             <div
                 className="h-96 rounded-2xl"
                 style={{
-                    backgroundImage: "url(/work/consumerhouse-research-computer-screenshot.png)",
+                    backgroundImage: "url(/work/consumerhouse-research.png)",
                     backgroundSize: "cover",
                 }}></div>
         </div>
