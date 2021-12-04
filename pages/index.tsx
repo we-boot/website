@@ -18,7 +18,6 @@ import { StepsGrid } from "../components/StepsGrid";
 import { QualityGrid } from "../components/QualityGrid";
 import { Footer } from "../components/Footer";
 import { TechologyStrip } from "../components/TechnologyIcons";
-import { WorkScroller } from "../components/WorkScroller";
 
 type SpotlightItem = {
     imageUrl: string;
@@ -353,12 +352,22 @@ export default function Home() {
                     <TechologyStrip />
                 </div>
             </div>
-            <div className="w-full h-screen" style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat" }}>
-                <header className="flex items-center flex-col p-10 text-white">
-                    <h2 className=" text-4xl font-bold">Our solutions</h2>
-                    <p className="text-2xl opacity-50 mt-4">Our creations</p>
-                </header>
-                {/* <WorkScroller /> */}
+            <div className="w-full" style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat" }}>
+                <div className="w-full flex justify-center">
+                    <div className="max-w-7xl w-full">
+                        <div className="flex min-h-screen">
+                            <header style={{ width: "40%" }} className="text-white sticky top-0 left-0 p-20 self-start ">
+                                <h2 className=" text-4xl font-bold">Our solutions</h2>
+                                <p className="text-2xl opacity-50 mt-4">Our creations</p>
+                            </header>
+                            <div className="flex-grow mt-20">
+                                <WorkCard />
+                                <WorkCard />
+                                <WorkCard />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="w-full h-screen" style={{ background: "#111" }}>
                 {/* questions and answers */}
@@ -367,6 +376,21 @@ export default function Home() {
                 {/* about us */}
             </div>
             <Footer />
+        </div>
+    );
+}
+
+function WorkCard() {
+    return (
+        <div className="text-white flex-grow mb-8 p-8 hover:bg-white hover:bg-opacity-10 rounded-xl">
+            <h3 className="text-2xl mb-2 font-bold">Onderzoeken ConsumerHouse</h3>
+            <p className="opacity-50 mb-5 text-base">Deze website automatiseert het rekruteringsproces van respondenten.</p>
+            <div
+                className="h-96 rounded-2xl"
+                style={{
+                    backgroundImage: "url(/work/consumerhouse-research-computer-screenshot.png)",
+                    backgroundSize: "cover",
+                }}></div>
         </div>
     );
 }
