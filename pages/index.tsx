@@ -11,7 +11,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import gsap, { Expo, Power0 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faEnvelope, faPaperPlane, faStore, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faEnvelope, faMousePointer, faPaperPlane, faStore, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 import { NavBar } from "../components/NavItem";
 import { Mapping, TextureLoader } from "three";
 import { StepsGrid } from "../components/StepsGrid";
@@ -286,7 +286,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div>
+        <div style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat", backgroundPosition: "0 50px" }}>
             {/* <div
                 className="text-white fixed top-0 left-0 w-full z-10"
                 style={{
@@ -322,12 +322,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div
-                className="w-full text-white min-h-screen"
-                style={{
-                    background: "url(/dot2.png)",
-                    backgroundRepeat: "repeat",
-                }}>
+            <div className="w-full text-white min-h-screen">
                 <header className="flex items-center flex-col p-10">
                     <h2 className=" text-4xl font-bold">How we work</h2>
                     <p className="text-2xl opacity-50 mt-4">Your solution in 4 steps</p>
@@ -368,7 +363,7 @@ export default function Home() {
                     <TechologyStrip />
                 </div>
             </div>
-            <div className="w-full" style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat" }}>
+            <div className="w-full">
                 <div className="w-full flex justify-center">
                     <div className="max-w-7xl w-full">
                         <div className="flex min-h-screen flex-col lg:flex-row">
@@ -385,12 +380,25 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-screen" style={{ background: "#111" }}>
-                {/* questions and answers */}
+            <div
+                className="w-full text-white flex items-center justify-center"
+                style={{
+                    filter: "drop-shadow(0 0 20px #5B00E588)",
+                    height: 700,
+                    background: "url(/blob-haikei.svg)",
+                    backgroundSize: "auto 100%",
+                    backgroundPosition: "center center",
+                    backgroundRepeat: "no-repeat",
+                }}>
+                <div className="">
+                    <h2 className="text-4xl font-bold">Convinced?</h2>
+                    <p className="text-2xl opacity-50">Work with us.</p>
+                    <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white">
+                        Start here <FontAwesomeIcon icon={faMousePointer} />
+                    </button>
+                </div>
             </div>
-            <div className="w-full h-screen" style={{ background: "#111" }}>
-                {/* about us */}
-            </div>
+
             <Footer />
         </div>
     );
