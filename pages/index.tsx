@@ -347,19 +347,21 @@ export default function Home() {
                 <div className="flex justify-center">
                     <QualityGrid />
                 </div>
-                <div className="h-60">
-                    <p className="text-2xl text-center opacity-50 mt-4">Questions and Answers</p>
-                    <div className="flex items-start justify-center flex-wrap">
-                        <QuestionAnswerCard question="Hoe lang duurt ontwikkeling?" answer="Ontwikkelingstijd ligt tussen de 1 en 4 weken." />
-                        <QuestionAnswerCard question="Hoe verloopt een meeting?" answer="We meeten via een zoom meeting." />
-                        <QuestionAnswerCard
-                            question="Hoeveel kost dit?"
-                            answer="Kleine projecten kosten 2.000, grotere kunnen meer dan 10.000 kosten."
-                        />
-                        <QuestionAnswerCard
-                            question="Hoe worden kosten berekend?"
-                            answer="Door het aantal interactieve elementen in je software op te tellen."
-                        />
+                <div className="h-80">
+                    <p className="text-2xl text-center opacity-50 mt-16">Questions and Answers</p>
+                    <div className="flex justify-center">
+                        <div className="flex items-start justify-center flex-wrap mt-4 max-w-4xl">
+                            <QuestionAnswerCard question="Hoe lang duurt ontwikkeling?" answer="Ontwikkelingstijd ligt tussen de 1 en 4 weken." />
+                            <QuestionAnswerCard question="Hoe verloopt een meeting?" answer="We meeten via een zoom meeting." />
+                            <QuestionAnswerCard
+                                question="Hoeveel kost dit?"
+                                answer="Kleine projecten kosten 2.000, grotere kunnen meer dan 10.000 kosten."
+                            />
+                            <QuestionAnswerCard
+                                question="Hoe worden kosten berekend?"
+                                answer="Door het aantal interactieve elementen in je software op te tellen."
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className="relative w-full overflow-x-hidden my-20 h-52 opacity-20">
@@ -369,12 +371,12 @@ export default function Home() {
             <div className="w-full" style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat" }}>
                 <div className="w-full flex justify-center">
                     <div className="max-w-7xl w-full">
-                        <div className="flex min-h-screen">
-                            <header style={{ width: "40%" }} className="text-white sticky top-0 left-0 p-20 self-start ">
-                                <h2 className=" text-4xl font-bold">Our solutions</h2>
-                                <p className="text-2xl opacity-50 mt-4">Our creations</p>
+                        <div className="flex min-h-screen flex-col lg:flex-row">
+                            <header className="text-white lg:sticky top-0 left-0 py-20 lg:px-20 lg:self-start lg:w-2/5">
+                                <h2 className="text-4xl font-bold text-center lg:text-left">Our solutions</h2>
+                                <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">Our creations</p>
                             </header>
-                            <div className="flex-grow mt-20">
+                            <div className="flex-grow lg:mt-20">
                                 <WorkCard />
                                 <WorkCard />
                                 <WorkCard />
@@ -397,10 +399,10 @@ export default function Home() {
 function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.ReactNode }) {
     const [shown, setShown] = useState(false);
     return (
-        <div className="rounded-lg overflow-hidden m-4 w-96">
-            <div className="flex items-center bg-white bg-opacity-10 hover:bg-opacity-20 px-4 py-3" onClick={() => setShown(!shown)}>
+        <div className="rounded-lg overflow-hidden m-2 flex-grow">
+            <div className="flex items-center bg-white bg-opacity-10 hover:bg-opacity-20 px-4 py-3 cursor-pointer" onClick={() => setShown(!shown)}>
                 <p className="font-bold text-white text-lg flex-grow whitespace-nowrap">{props.question}</p>
-                <span className="opacity-50 scale-150 transform ml-6 mr-2 mt-1">
+                <span className="opacity-50 scale-150 transform ml-6 mr-2">
                     <FontAwesomeIcon icon={faChevronDown} style={{ transform: shown ? "rotate(180deg)" : "rotate(0deg)", transition: "200ms" }} />
                 </span>
             </div>
@@ -413,14 +415,15 @@ function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.
 
 function WorkCard() {
     return (
-        <div className="text-white flex-grow mb-8 p-8 hover:bg-white hover:bg-opacity-10 rounded-xl">
+        <div className="text-white flex-grow mb-8 p-4 lg:p-8 hover:bg-white hover:bg-opacity-10 rounded-xl">
             <h3 className="text-2xl mb-2 font-bold">Onderzoeken ConsumerHouse</h3>
             <p className="opacity-50 mb-5 text-base">Deze website automatiseert het rekruteringsproces van respondenten.</p>
             <div
-                className="h-96 rounded-2xl"
+                className="lg:h-96 h-64 rounded-2xl"
                 style={{
                     backgroundImage: "url(/work/consumerhouse-research.png)",
                     backgroundSize: "cover",
+                    backgroundPosition: "top center",
                 }}></div>
         </div>
     );

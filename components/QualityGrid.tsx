@@ -48,7 +48,7 @@ export function QualityGrid() {
     }, []);
 
     return (
-        <div className="flex flex-wrap max-w-9xl justify-center">
+        <div className="flex flex-wrap flex-col lg:flex-row max-w-4xl 2xl:max-w-9xl justify-center">
             <QualityCard
                 description="We are productivity freaks. Software is built in one take in a matter of weeks, not months."
                 title="Development time">
