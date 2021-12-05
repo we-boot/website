@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -18,35 +18,12 @@ import { StepsGrid } from "../components/StepsGrid";
 import { QualityGrid } from "../components/QualityGrid";
 import { Footer } from "../components/Footer";
 import { TechologyStrip } from "../components/TechnologyIcons";
-
-type SpotlightItem = {
-    imageUrl: string;
-    text: string;
-    type: "phone" | "computer";
-    texture?: THREE.Texture;
-};
+import { Language, LANGUAGE, SpotlightItem } from "../translations";
 
 const MONITOR_SCALE = 0.95;
 const PHONE_SCALE = 1.2;
-const SPOTLIGHT: SpotlightItem[] = [
-    {
-        type: "phone",
-        imageUrl: "/groen.png",
-        text: "automatisation software",
-    },
-    {
-        type: "phone",
-        imageUrl: "/inspections.png",
-        text: "productivity tools",
-    },
-    {
-        type: "computer",
-        imageUrl: "/desktop.png",
-        text: "data driven dashboards",
-    },
-];
 
-export default function Home() {
+export default function Home({ language }: { language: Language }) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
     const phoneRef = useRef<THREE.Group>();
@@ -107,7 +84,7 @@ export default function Home() {
     async function nextSpotlightItem() {
         mouseAnimationRef.current = false;
 
-        let currentSpotlight = SPOTLIGHT[spotlightIndexRef.current];
+        let currentSpotlight = language.spotlightItems[spotlightIndexRef.current];
 
         // Animate text
         gsap.to(textRef.current, { opacity: 0, duration: 1, x: -100, ease: Expo.easeIn });
@@ -123,10 +100,10 @@ export default function Home() {
             monitorRef.current!.visible = false;
         }
 
-        if (++spotlightIndexRef.current >= SPOTLIGHT.length) {
+        if (++spotlightIndexRef.current >= language.spotlightItems.length) {
             spotlightIndexRef.current = 0;
         }
-        showSpotlightItem(SPOTLIGHT[spotlightIndexRef.current]);
+        showSpotlightItem(language.spotlightItems[spotlightIndexRef.current]);
     }
 
     function renderCanvas() {
@@ -209,7 +186,7 @@ export default function Home() {
                 scene.add(gltf.scene);
                 phoneRef.current = gltf.scene;
                 console.log("done loading phone model");
-                showSpotlightItem(SPOTLIGHT[2]);
+                showSpotlightItem(language.spotlightItems[2]);
             });
 
             gltfLoader.load("monitor.gltf", (gltf) => {
@@ -258,7 +235,7 @@ export default function Home() {
 
         function onMouseMove(ev: MouseEvent) {
             if (!mouseAnimationRef.current) return;
-            let spotlight = SPOTLIGHT[spotlightIndexRef.current];
+            let spotlight = language.spotlightItems[spotlightIndexRef.current];
             if (spotlight.type === "phone" && phoneRef.current) {
                 let xPercent = ev.clientX / window.innerWidth + 0.2;
                 let yPercent = ev.clientY / window.innerHeight + 0.2;
@@ -307,7 +284,7 @@ export default function Home() {
                     <canvas className="origin-center h-2/3 lg:h-full w-full lg:w-1/2 flex-shrink" ref={canvasRef} />
                     <div className="flex justify-center lg:items-center h-1/3 lg:h-full m-2 w-full lg:w-1/2 flex-shrink">
                         <div className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center lg:text-right ">
-                            <p>We build professional grade</p>
+                            <p>{language.weBuild}</p>
                             <p ref={textRef}></p>
                         </div>
                     </div>
@@ -418,3 +395,12 @@ function WorkCard() {
         </div>
     );
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    console.log("locale", context.locale);
+    return {
+        props: {
+            language: LANGUAGE[context.locale!],
+        },
+    };
+};
