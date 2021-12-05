@@ -1,11 +1,18 @@
 import { faGit, faGithub, faGithubAlt } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faMousePointer } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 export function Footer() {
     return (
-        <footer className="pt-56 px-20 pb-20 text-white" style={{ background: "url(/layered-steps.svg)", backgroundSize: "stretch" }}>
+        <footer className="pt-56 px-10 sm:px-20 pb-20 text-white" style={{ background: "url(/layered-steps.svg)", backgroundSize: "auto 100%" }}>
+            <div className="my-20">
+                <h2 className="text-4xl font-bold">Convinced?</h2>
+                <p className="text-2xl opacity-50">Work with us.</p>
+                <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white">
+                    Start here <FontAwesomeIcon icon={faMousePointer} />
+                </button>
+            </div>
             <div>
                 <h2 className="text-2xl font-bold text-white">weboot</h2>
 

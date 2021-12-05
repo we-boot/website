@@ -380,7 +380,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div
+
+            {/* <div
                 className="w-full text-white flex items-center justify-center"
                 style={{
                     filter: "drop-shadow(0 0 20px #5B00E588)",
@@ -397,7 +398,7 @@ export default function Home() {
                         Start here <FontAwesomeIcon icon={faMousePointer} />
                     </button>
                 </div>
-            </div>
+            </div> */}
 
             <Footer />
         </div>
