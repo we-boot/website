@@ -305,8 +305,8 @@ export default function Home() {
                 <NavBar />
                 <div className="overflow-x-hidden absolute top-0 left-0 w-screen h-screen flex flex-col lg:flex-row pointer-events-none">
                     <canvas className="origin-center h-2/3 lg:h-full w-full lg:w-1/2 flex-shrink" ref={canvasRef} />
-                    <div className="flex justify-center lg:items-center h-1/3 lg:h-full w-full lg:w-1/2 flex-shrink">
-                        <div className="text-xl sm:text-2xl lg:text-4xl xl:text-5xl font-bold text-center lg:text-right ">
+                    <div className="flex justify-center lg:items-center h-1/3 lg:h-full m-2 w-full lg:w-1/2 flex-shrink">
+                        <div className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center lg:text-right ">
                             <p>We build professional grade</p>
                             <p ref={textRef}></p>
                         </div>
@@ -342,7 +342,7 @@ export default function Home() {
                 <div className="flex justify-center">
                     <QualityGrid />
                 </div>
-                <div className="h-80">
+                <div className="lg:h-80 h-96">
                     <p className="text-2xl text-center opacity-50 mt-16">Questions and Answers</p>
                     <div className="flex justify-center">
                         <div className="flex items-start justify-center flex-wrap mt-4 max-w-4xl">
@@ -380,25 +380,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
-            {/* <div
-                className="w-full text-white flex items-center justify-center"
-                style={{
-                    filter: "drop-shadow(0 0 20px #5B00E588)",
-                    height: 700,
-                    background: "url(/blob-haikei.svg)",
-                    backgroundSize: "auto 100%",
-                    backgroundPosition: "center center",
-                    backgroundRepeat: "no-repeat",
-                }}>
-                <div className="">
-                    <h2 className="text-4xl font-bold">Convinced?</h2>
-                    <p className="text-2xl opacity-50">Work with us.</p>
-                    <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white">
-                        Start here <FontAwesomeIcon icon={faMousePointer} />
-                    </button>
-                </div>
-            </div> */}
 
             <Footer />
         </div>
