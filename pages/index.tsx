@@ -294,19 +294,19 @@ export default function Home({ language }: { language: Language }) {
                     <div
                         className="p-10 flex items-center flex-col opacity-50"
                         onClick={() => window.scrollTo({ behavior: "smooth", top: window.innerHeight, left: 0 })}>
-                        <p className="">Scroll down for more info</p>
+                        <p>{language.scrollDown}</p>
                         <FontAwesomeIcon icon={faChevronDown} />
                     </div>
                 </div>
             </div>
             <div className="w-full text-white min-h-screen">
                 <header className="flex items-center flex-col p-10">
-                    <h2 className=" text-4xl font-bold">How we work</h2>
-                    <p className="text-2xl opacity-50 mt-4">Your solution in 4 steps</p>
+                    <h2 className=" text-4xl font-bold">{language.howWeWork}</h2>
+                    <p className="text-2xl opacity-50 mt-4">{language.howWeWorkNote}</p>
                 </header>
 
                 <div className="flex justify-center">
-                    <StepsGrid />
+                    <StepsGrid language={language} />
                 </div>
             </div>
             <div
