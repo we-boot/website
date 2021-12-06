@@ -19,6 +19,7 @@ import { QualityGrid } from "../components/QualityGrid";
 import { Footer } from "../components/Footer";
 import { TechologyStrip } from "../components/TechnologyIcons";
 import { Language, LANGUAGE, SpotlightItem } from "../translations";
+import { Button } from "../components/Button";
 
 const MONITOR_SCALE = 0.95;
 const PHONE_SCALE = 1.2;
@@ -378,11 +379,9 @@ export default function Home({ language }: { language: Language }) {
                             style={{ minHeight: 50 }}></textarea>
                         <div className="flex items-center mt-4">
                             <p className="ml-auto mr-4 opacity-50">We sturen je zo snel mogelijk een antwoord</p>
-                            <button
-                                type="submit"
-                                className="px-4 whitespace-nowrap text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
+                            <Button type="submit">
                                 Verstuur <FontAwesomeIcon icon={faPaperPlane} />
-                            </button>
+                            </Button>
                         </div>
                     </form>
                 </div>

@@ -2,6 +2,7 @@ import { faGit, faGithub, faGithubAlt } from "@fortawesome/free-brands-svg-icons
 import { faEnvelope, faMousePointer } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Button } from "./Button";
 
 export function Footer() {
     return (
@@ -10,9 +11,9 @@ export function Footer() {
                 <h2 className="text-4xl font-bold">Convinced?</h2>
                 <p className="text-2xl opacity-50">Work with us.</p>
                 <a href="#contact">
-                    <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
+                    <Button style={{ marginTop: "1rem" }}>
                         Start here <FontAwesomeIcon icon={faMousePointer} />
-                    </button>
+                    </Button>
                 </a>
             </div>
             <div>

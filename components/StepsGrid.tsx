@@ -12,6 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Language } from "../translations";
+import { Button } from "./Button";
 
 function StepIndicator(props: { children: React.ReactNode; hideStick?: boolean }) {
     return (
@@ -61,9 +62,9 @@ export function StepsGrid({ language }: { language: Language }) {
                     </div>
                 </div> */}
                 <a href="#contact">
-                    <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
+                    <Button style={{ marginTop: "1rem" }}>
                         Start here <FontAwesomeIcon icon={faMousePointer} />
-                    </button>
+                    </Button>
                 </a>
             </StepContainer>
             <StepIndicator>
