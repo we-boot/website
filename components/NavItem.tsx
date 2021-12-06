@@ -16,17 +16,21 @@ export function NavBar() {
             </ul>
             <div className="ml-auto flex mx-5 items-center">
                 <ul className="overflow-hidden rounded-lg">
-                    <LanguageItem>NL</LanguageItem>
-                    <LanguageItem>EN</LanguageItem>
+                    <LanguageItem href="/nl">NL</LanguageItem>
+                    <LanguageItem href="/en-US">EN</LanguageItem>
                 </ul>
             </div>
         </nav>
     );
 }
 
-export function LanguageItem(props: React.HTMLAttributes<HTMLSpanElement>) {
+export function LanguageItem(props: React.HTMLAttributes<HTMLSpanElement> & { href: string }) {
     return (
-        <li {...props} className="bg-white inline-block bg-opacity-20 py-2 px-3 opacity-80 font-bold text-sm hover:bg-opacity-30 cursor-pointer"></li>
+        <a href={props.href}>
+            <li
+                {...props}
+                className="bg-white inline-block bg-opacity-20 py-2 px-3 opacity-80 font-bold text-sm hover:bg-opacity-30 cursor-pointer"></li>
+        </a>
     );
 }
 
