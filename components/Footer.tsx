@@ -9,9 +9,11 @@ export function Footer() {
             <div className="my-20">
                 <h2 className="text-4xl font-bold">Convinced?</h2>
                 <p className="text-2xl opacity-50">Work with us.</p>
-                <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
-                    Start here <FontAwesomeIcon icon={faMousePointer} />
-                </button>
+                <a href="#contact">
+                    <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
+                        Start here <FontAwesomeIcon icon={faMousePointer} />
+                    </button>
+                </a>
             </div>
             <div>
                 <h2 className="text-2xl font-bold text-white">weboot</h2>

@@ -2,8 +2,9 @@ import React from "react";
 
 export function NavBar() {
     function scrollToId(id: string) {
-        document.getElementById(id)!.scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => (location.hash = id), 1000);
+        location.hash = id;
+        // document.getElementById(id)!.scrollIntoView({ behavior: "smooth" });
+        // setTimeout(() => (location.hash = id), 1000);
     }
 
     return (

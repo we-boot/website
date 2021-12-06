@@ -1,5 +1,14 @@
 import { faStaylinked } from "@fortawesome/free-brands-svg-icons";
-import { faCode, faComments, faHandLizard, faHandshake, faHandshakeSlash, faLightbulb, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCode,
+    faComments,
+    faHandLizard,
+    faHandshake,
+    faHandshakeSlash,
+    faLightbulb,
+    faMousePointer,
+    faPaperPlane,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Language } from "../translations";
@@ -42,7 +51,7 @@ export function StepsGrid({ language }: { language: Language }) {
                     <span className="text-white opacity-50">1</span> {language.howWeWorkStep1}
                 </h2>
                 <p className="opacity-50 mt-3 text-lg">{language.howWeWorkStep1Note}</p>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                     <textarea className="border-white rounded-lg border-opacity-20 text-white border appearance-none bg-transparent w-full h-32"></textarea>
                     <div className="flex flex-col items-end mt-2">
                         <button className="px-4 py-1 rounded-lg text-base hover:opacity-80" style={{ background: "#6600ff" }}>
@@ -50,7 +59,12 @@ export function StepsGrid({ language }: { language: Language }) {
                         </button>
                         <p className="text-white opacity-30 text-sm">{language.howWeWorkStep1SubmitNote}</p>
                     </div>
-                </div>
+                </div> */}
+                <a href="#contact">
+                    <button className="px-4 mt-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
+                        Start here <FontAwesomeIcon icon={faMousePointer} />
+                    </button>
+                </a>
             </StepContainer>
             <StepIndicator>
                 <FontAwesomeIcon icon={faComments} />
