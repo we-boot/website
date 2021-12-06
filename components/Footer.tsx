@@ -2,17 +2,18 @@ import { faGit, faGithub, faGithubAlt } from "@fortawesome/free-brands-svg-icons
 import { faEnvelope, faMousePointer } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Language } from "../translations";
 import { Button } from "./Button";
 
-export function Footer() {
+export function Footer({ language }: { language: Language }) {
     return (
         <footer className="pt-56 px-10 sm:px-20 pb-20 text-white" style={{ background: "url(/layered-steps.svg)", backgroundSize: "auto 100%" }}>
             <div className="my-20">
-                <h2 className="text-4xl font-bold">Convinced?</h2>
-                <p className="text-2xl opacity-50">Work with us.</p>
+                <h2 className="text-4xl font-bold">{language.footerHeader}</h2>
+                <p className="text-2xl opacity-50">{language.footerHeaderNote}</p>
                 <a href="#contact">
                     <Button style={{ marginTop: "1rem" }}>
-                        Start here <FontAwesomeIcon icon={faMousePointer} />
+                        {language.startHere} <FontAwesomeIcon icon={faMousePointer} />
                     </Button>
                 </a>
             </div>
@@ -25,11 +26,11 @@ export function Footer() {
                     </p>
                 </a>
                 <p className="opacity-50 mt-2">KVK 80384781</p>
-                <p className="opacity-50">weboot is a registered company in the chamber of commerce (Kamer Van Koophandel) of The Netherlands.</p>
+                <p className="opacity-50">{language.footerCompanyNote}</p>
 
                 <a href="https://github.com/we-boot/website">
                     <p className="opacity-50 mt-2 hover:opacity-100 hover:underline">
-                        <FontAwesomeIcon icon={faGithub} /> Website by weboot, source on GitHub
+                        <FontAwesomeIcon icon={faGithub} /> {language.footerSourceNote}
                     </p>
                 </a>
             </div>
