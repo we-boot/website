@@ -56,6 +56,7 @@ export const LANGUAGE: Languages = {
         whyUsItem3Note: "Onze software heeft de mogelijkheid om op elk apparaat van elke grootte te werken. Zolang het een webbrowser ondersteund.",
         whyUsItem4: "Web/Mobiele Apps",
         whyUsItem4Note: "Onze software werkt in een mobiele app of in de browser. Of beide.",
+        questionsAnswersNote: "Vragen en Antwoorden",
         questionsAnswers: [
             {
                 question: "Wat soort software maken jullie?",
@@ -81,7 +82,7 @@ export const LANGUAGE: Languages = {
             },
         ],
         ourSolutions: "Onze oplossingen",
-        ourSolutionsNote: "Software die we hebben gebouwd.",
+        ourSolutionsNote: "Software die we gebouwd hebben.",
         solutions: [
             {
                 title: "ConsumerHouse Onderzoeken",
@@ -94,7 +95,7 @@ export const LANGUAGE: Languages = {
                 description:
                     "ConsumerHouse wou een manier om het rekruteren van jobstudenten te automatiseren, zodat deze kunnen helpen bij hun onderzoeken.",
                 url: "https://studenten-consumerhouse.be/",
-                imageUrls: ["/work/consumerhouse-students.png"],
+                imageUrls: ["/work/consumerhouse-projects.png"],
             },
         ],
         spotlightItems: [
@@ -142,6 +143,7 @@ export const LANGUAGE: Languages = {
         whyUsItem3Note: "Our software has the possibility to run on any device of any size, as long as it supports a web browser.",
         whyUsItem4: "Web/Mobile Apps",
         whyUsItem4Note: "Our software runs on a mobile device or in the browser, just like a website.",
+        questionsAnswersNote: "Questions and Answers",
         questionsAnswers: [
             {
                 question: "What kind of software do you create?",
@@ -184,7 +186,7 @@ export const LANGUAGE: Languages = {
                 title: "ConsumerHouse Students",
                 description: "ConsumerHouse wanted a way to automate the recruitment of working students, to help them during their research.",
                 url: "https://studenten-consumerhouse.be/",
-                imageUrls: ["/work/consumerhouse-students.png"],
+                imageUrls: ["/work/consumerhouse-projects.png"],
             },
         ],
         spotlightItems: [

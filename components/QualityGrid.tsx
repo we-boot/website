@@ -22,7 +22,9 @@ import {
     LinuxIcon,
 } from "./TechnologyIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faHourglass, faSign, faSignal } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faHandSparkles, faHourglass, faSign, faSignal, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faChrome } from "@fortawesome/free-brands-svg-icons";
+import { Language } from "../translations";
 
 function QualityCard(props: React.HTMLAttributes<HTMLDivElement> & { title: React.ReactNode; description: React.ReactNode }) {
     return (
@@ -37,7 +39,7 @@ function QualityCard(props: React.HTMLAttributes<HTMLDivElement> & { title: Reac
 }
 
 // const TECH_ICONS = [<TypeScriptIcon />, <NextJsIcon />, <PostgresIcon />, <NodeJSIcon />, <ReactIcon />, <DockerIcon />, <NginxIcon />, <CIcon />];
-export function QualityGrid() {
+export function QualityGrid({ language }: { language: Language }) {
     const clockRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -49,9 +51,7 @@ export function QualityGrid() {
 
     return (
         <div className="flex flex-wrap flex-col lg:flex-row max-w-4xl 2xl:max-w-9xl justify-center">
-            <QualityCard
-                description="We are productivity freaks. Software is built in one take in a matter of weeks, not months."
-                title="Development time">
+            <QualityCard description={language.whyUsItem1Note} title={language.whyUsItem1}>
                 <div className="flex-grow flex justify-center items-center mt-4">
                     <div className="bg-white bg-opacity-10 w-32 h-32 rounded-full relative">
                         <div
@@ -62,25 +62,21 @@ export function QualityGrid() {
                 </div>
             </QualityCard>
             {/* <QualityCard description="Every application consists of a modern looking user interface." title="Modern"></QualityCard> */}
-            <QualityCard description="Our software updates automatically, the user won't even notice." title="Updates">
+            <QualityCard description={language.whyUsItem2Note} title={language.whyUsItem2}>
                 <div className="flex-grow flex justify-center items-center text-white text-opacity-10">
-                    <FontAwesomeIcon size={"8x"} icon={faArrowDown} />
+                    <FontAwesomeIcon size={"8x"} icon={faStar} />
                 </div>
             </QualityCard>
-            <QualityCard
-                description="Our software has the possibility to run on any device of any size, as long as it supports a web browser."
-                title="Responsive">
+            <QualityCard description={language.whyUsItem3Note} title={language.whyUsItem3}>
                 <div className="flex justify-center flex-grow my-8">
                     <div className="bg-white bg-opacity-10 rounded-lg w-28 relative">
                         <div className="bg-white bg-opacity-10 rounded-lg w-16 h-20 absolute bottom-0 left-0"></div>
                     </div>
                 </div>
             </QualityCard>
-            <QualityCard
-                description="Because our software runs in the cloud, it has the possibility to be reached from any location."
-                title="Reachable">
-                <div className="flex-grow flex  justify-center items-center mt-4 text-white text-opacity-10">
-                    <FontAwesomeIcon size={"8x"} icon={faSignal} />
+            <QualityCard description={language.whyUsItem4Note} title={language.whyUsItem4}>
+                <div className="flex-grow flex justify-center items-center mt-4 text-white text-opacity-10">
+                    <FontAwesomeIcon size={"8x"} icon={faChrome} />
                 </div>
             </QualityCard>
         </div>

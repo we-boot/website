@@ -313,26 +313,19 @@ export default function Home({ language }: { language: Language }) {
                 className="w-full flex flex-col text-white"
                 style={{ background: "url(/blurry-gradient-haikei4.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <header className="flex items-center flex-col p-10">
-                    <h2 className=" text-4xl font-bold">Why us</h2>
-                    <p className="text-2xl opacity-50 mt-4">Our qualities</p>
+                    <h2 className=" text-4xl font-bold">{language.whyUs}</h2>
+                    <p className="text-2xl opacity-50 mt-4">{language.whyUsNote}</p>
                 </header>
                 <div className="flex justify-center">
-                    <QualityGrid />
+                    <QualityGrid language={language} />
                 </div>
                 <div className="lg:h-80 h-96">
-                    <p className="text-2xl text-center opacity-50 mt-16">Questions and Answers</p>
+                    <p className="text-2xl text-center opacity-50 mt-16">{language.questionsAnswersNote}</p>
                     <div className="flex justify-center">
                         <div className="flex items-start justify-center flex-wrap mt-4 max-w-4xl">
-                            <QuestionAnswerCard question="Hoe lang duurt ontwikkeling?" answer="Ontwikkelingstijd ligt tussen de 1 en 4 weken." />
-                            <QuestionAnswerCard question="Hoe verloopt een meeting?" answer="We meeten via een zoom meeting." />
-                            <QuestionAnswerCard
-                                question="Hoeveel kost dit?"
-                                answer="Kleine projecten kosten 2.000, grotere kunnen meer dan 10.000 kosten."
-                            />
-                            <QuestionAnswerCard
-                                question="Hoe worden kosten berekend?"
-                                answer="Door het aantal interactieve elementen in je software op te tellen."
-                            />
+                            {language.questionsAnswers.map((e) => (
+                                <QuestionAnswerCard question={e.question} answer={e.answer} />
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -344,14 +337,14 @@ export default function Home({ language }: { language: Language }) {
                 <div className="w-full flex justify-center">
                     <div className="max-w-7xl w-full">
                         <div className="flex min-h-screen flex-col lg:flex-row">
-                            <header className="text-white lg:sticky top-0 left-0 py-20 lg:px-20 lg:self-start lg:w-2/5">
-                                <h2 className="text-4xl font-bold text-center lg:text-left">Our solutions</h2>
-                                <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">Our creations</p>
+                            <header className="text-white lg:sticky top-0 left-0 py-20 lg:mr-10 lg:self-start lg:w-2/5">
+                                <h2 className="text-4xl font-bold text-center lg:text-left">{language.ourSolutions}</h2>
+                                <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">{language.ourSolutionsNote}</p>
                             </header>
                             <div className="flex-grow lg:mt-20">
-                                <WorkCard />
-                                <WorkCard />
-                                <WorkCard />
+                                {language.solutions.map((s) => (
+                                    <WorkCard key={s.title} {...s} />
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -380,19 +373,21 @@ function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.
     );
 }
 
-function WorkCard() {
+function WorkCard(props: { title: string; imageUrls: string[]; description: string; url: string }) {
     return (
-        <div className="text-white flex-grow mb-8 p-4 lg:p-8 hover:bg-white hover:bg-opacity-10 rounded-xl">
-            <h3 className="text-2xl mb-2 font-bold">Onderzoeken ConsumerHouse</h3>
-            <p className="opacity-50 mb-5 text-base">Deze website automatiseert het rekruteringsproces van respondenten.</p>
-            <div
-                className="lg:h-96 h-64 rounded-2xl"
-                style={{
-                    backgroundImage: "url(/work/consumerhouse-research.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "top center",
-                }}></div>
-        </div>
+        <a href={props.url} target="_blank">
+            <div className="text-white flex-grow mb-8 p-4 lg:p-8 hover:bg-white hover:bg-opacity-10 rounded-xl">
+                <h3 className="text-2xl mb-2 font-bold">{props.title}</h3>
+                {props.description && <p className="opacity-50 mb-5 text-base">{props.description}</p>}
+                <div
+                    className="lg:h-96 h-64 rounded-2xl"
+                    style={{
+                        backgroundImage: `url(${props.imageUrls[0]})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "top center",
+                    }}></div>
+            </div>
+        </a>
     );
 }
 
