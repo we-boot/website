@@ -398,7 +398,7 @@ function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.
     return (
         <div className="rounded-lg overflow-hidden m-2 flex-grow" style={{ maxWidth: "500px" }}>
             <div className="flex items-center bg-white bg-opacity-10 hover:bg-opacity-20 px-4 py-3 cursor-pointer" onClick={() => setShown(!shown)}>
-                <p className="font-bold text-white text-lg flex-grow whitespace-nowrap">{props.question}</p>
+                <p className="font-bold text-white flex-grow text-base md:text-lg lg:whitespace-nowrap">{props.question}</p>
                 <span className="opacity-50 scale-150 transform ml-6 mr-2">
                     <FontAwesomeIcon icon={faChevronDown} style={{ transform: shown ? "rotate(180deg)" : "rotate(0deg)", transition: "200ms" }} />
                 </span>
