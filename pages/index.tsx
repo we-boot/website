@@ -335,6 +335,38 @@ export default function Home({ language }: { language: Language }) {
                     </div>
                 </div>
             </div>
+            <div className="w-full flex justify-center mt-28">
+                <div className="max-w-4xl w-full text-white rounded-2xl" style={{ background: "#5B00E5" }}>
+                    <h2 id="contact" className="text-white text-center text-4xl font-bold my-8">
+                        Contact
+                    </h2>
+                    <form className="p-4 m-4">
+                        <div className="items-center gap-4" style={{ display: "grid", gridTemplateColumns: "110px 1fr 110px 1fr" }}>
+                            <label htmlFor="contact-email" className="text-base font-bold">
+                                Je e-mail
+                            </label>
+                            <input className="px-3 py-2 rounded-xl bg-black bg-opacity-50 text-base" type="email" id="contact-email" name="email" />
+                            <label htmlFor="contact-email" className="text-base font-bold">
+                                Je naam
+                            </label>
+                            <input className="px-3 py-2 rounded-xl bg-black bg-opacity-50" type="text" id="contact-name" name="name" />
+                        </div>
+                        <label htmlFor="contact-description" className="block py-2 font-bold">
+                            Je idee of probleem
+                        </label>
+                        <textarea
+                            name="description"
+                            id="contact-description"
+                            className="block px-3 py-2 rounded-xl w-full h-56 bg-black bg-opacity-50"></textarea>
+                        <div className="flex items-center mt-4">
+                            <p className="ml-auto mr-4 opacity-50">We sturen je zo snel mogelijk een antwoord</p>
+                            <button type="submit" className="px-4 py-2 bg-white text-black font-bold rounded-xl hover:opacity-50">
+                                Verstuur <FontAwesomeIcon icon={faPaperPlane} />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <Footer />
         </div>
