@@ -5,8 +5,22 @@ export type SpotlightItem = {
     texture?: THREE.Texture;
 };
 
+export type QuestionAnswer = {
+    question: string;
+    answer: string;
+};
+
+export type Solution = {
+    title: string;
+    description: string;
+    url: string;
+    imageUrls: string[];
+};
+
 export type Language = {
     spotlightItems: SpotlightItem[];
+    questionsAnswers: QuestionAnswer[];
+    solutions: Solution[];
     [key: string]: any;
 };
 
@@ -32,6 +46,57 @@ export const LANGUAGE: Languages = {
         howWeWorkStep4: "We ontwikkelen",
         howWeWorkStep4Note:
             "Wij bouwen het project van start tot eind. We blijven communiceren en aanpassen zodat we allebei blij zijn met de uitkomst.",
+        whyUs: "Waarom wij?",
+        whyUsNote: "Onze kwaliteiten",
+        whyUsItem1: "Snelle Ontwikkeling",
+        whyUsItem1Note: "Wij bouwen software in een aantal weken, niet maanden.",
+        whyUsItem2: "Modern",
+        whyUsItem2Note: "Onze software heeft een moderne look & feel.",
+        whyUsItem3: "Responsive",
+        whyUsItem3Note: "Onze software heeft de mogelijkheid om op elk apparaat van elke grootte te werken. Zolang het een webbrowser ondersteund.",
+        whyUsItem4: "Web/Mobiele Apps",
+        whyUsItem4Note: "Onze software werkt in een mobiele app of in de browser. Of beide.",
+        questionsAnswers: [
+            {
+                question: "Wat soort software maken jullie?",
+                answer: "We maken (progressive) Web Apps en Mobile Apps. Web Apps werken in de browser en Mobile Apps op je mobiele telefoon.",
+            },
+            {
+                question: "Hoe lang duurt ontwikkeling?",
+                answer: "Ontwikkeltijd hangt af van de moeilijkheidsgraad van het project. Het gemiddelde is rond 4 dagen - 3 weken.",
+            },
+            {
+                question: "Hoeveel gaat dit kosten?",
+                answer: "We stellen een totaalprijs voor, we ontwikkelen niet per uur. Gemiddelde projecten kosten tussen €2.000 - €30.000.",
+            },
+            {
+                question: "Hoe werkt de betaling?",
+                answer: "Betalingen gebeuren via een IBAN overschrijving. De eerste helft van de totaalprijs moet vooraf betaald worden, de rest na uitwerking.",
+            },
+            {
+                question: "Accepteer je simpele projecten?",
+                answer:
+                    "Misschien, je kan je idee proberen versturen, Ik laat je weten of ik geïnteresseerd ben. We zullen de volgende types projecten waarschijnlijk niet accepteren: " +
+                    "<ul><li>Websites met bijna geen onderdelen, bijvoorbeeld, een WordPress website.</li><li>Software dat het weboot merk zou kunnen schaden.</li></ul>",
+            },
+        ],
+        ourSolutions: "Onze oplossingen",
+        ourSolutionsNote: "Software die we hebben gebouwd.",
+        solutions: [
+            {
+                title: "ConsumerHouse Onderzoeken",
+                description: "ConsumerHouse wou een manier om het rekruteren van respondenten te automatiseren.",
+                url: "https://onderzoeken-consumerhouse.be/",
+                imageUrls: ["/work/consumerhouse-research.png"],
+            },
+            {
+                title: "ConsumerHouse Studenten",
+                description:
+                    "ConsumerHouse wou een manier om het rekruteren van jobstudenten te automatiseren, zodat deze kunnen helpen bij hun onderzoeken.",
+                url: "https://studenten-consumerhouse.be/",
+                imageUrls: ["/work/consumerhouse-students.png"],
+            },
+        ],
         spotlightItems: [
             {
                 type: "phone",
@@ -46,7 +111,7 @@ export const LANGUAGE: Languages = {
             {
                 type: "computer",
                 imageUrl: "/desktop.png",
-                text: "Data gedreven dashboards",
+                text: "data gedreven dashboards",
             },
         ],
     },
@@ -67,6 +132,61 @@ export const LANGUAGE: Languages = {
         howWeWorkStep4: "We'll develop",
         howWeWorkStep4Note:
             "We build software from start to finish. We keep communicating and adjusting to make sure we are both happy with the outcome.",
+        whyUs: "Why us",
+        whyUsNote: "Our qualities",
+        whyUsItem1: "Fast Development",
+        whyUsItem1Note: "We build software in one take in a matter of weeks, not months.",
+        whyUsItem2: "Modern",
+        whyUsItem2Note: "Our software is fast and has a modern look and feel.",
+        whyUsItem3: "Responsive",
+        whyUsItem3Note: "Our software has the possibility to run on any device of any size, as long as it supports a web browser.",
+        whyUsItem4: "Web/Mobile Apps",
+        whyUsItem4Note: "Our software runs on a mobile device or in the browser, just like a website.",
+        questionsAnswers: [
+            {
+                question: "What kind of software do you create?",
+                answer: "We create (progressive) Web Apps and Mobile Apps. Web Apps run in your webbrowser and Mobile Apps on your phone.",
+            },
+            {
+                question: "How long does development take?",
+                answer: "Development time depends on the complexity of the project. It averages at around 4 days - 3 weeks.",
+            },
+            {
+                question: "How much does this cost?",
+                // The total price is calculated by counting up all the interactive features on the website.
+                answer: "We will propose a total price, we don't charge hourly. Average projects can cost between €2.000 - €30.000.",
+            },
+            {
+                question: "How do payments take place?",
+                answer: "Payments are sent via IBAN. The first half of the proposed total price must be paid up front, and the rest after launch.",
+            },
+            {
+                question: "Do you accept simple projects?",
+                answer:
+                    "Maybe, you can try submitting your idea, I will respond letting you know if I'm interested. We probably won't accept the following types of projects: " +
+                    "<ul><li>Websites where the only funcionality is blogging.</li><li>Carefully designed landing pages like this one.</li><li>Websites with almost no custom funcionality, for example, WordPress website.</li><li>Software that could potentially harm the weboot brand.</li></ul>",
+            },
+            // {
+            //     question: "What technologies do you use?",
+            //     answer: "We mostly React, React Native, TypeScript, PostgreSQL, NextJS(NodeJS) and TailwindCSS",
+            // },
+        ],
+        ourSolutions: "Our solutions",
+        ourSolutionsNote: "Software we've created.",
+        solutions: [
+            {
+                title: "ConsumerHouse Research",
+                description: "ConsumerHouse wanted a way to automate the recruitment of their testing users.",
+                url: "https://onderzoeken-consumerhouse.be/",
+                imageUrls: ["/work/consumerhouse-research.png"],
+            },
+            {
+                title: "ConsumerHouse Students",
+                description: "ConsumerHouse wanted a way to automate the recruitment of working students, to help them during their research.",
+                url: "https://studenten-consumerhouse.be/",
+                imageUrls: ["/work/consumerhouse-students.png"],
+            },
+        ],
         spotlightItems: [
             {
                 type: "phone",
