@@ -142,14 +142,6 @@ export default function Home({ language }: { language: Language }) {
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         });
 
-        // let ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-        // scene.add(ambientLight);
-        // let pointLight = new THREE.PointLight(0xeeccff, 3);
-        // pointLight.position.x = -2;
-        // pointLight.position.y = 3;
-        // pointLight.position.z = 2;
-        // scene.add(pointLight);
-
         console.log("loading environment texture");
         let rgbeLoader = new RGBELoader();
 
@@ -213,23 +205,10 @@ export default function Home({ language }: { language: Language }) {
             });
         });
 
-        let composer = new EffectComposer(renderer);
-        composer.addPass(new RenderPass(scene, camera));
-        // let bloom = new UnrealBloomPass(new THREE.Vector2(canvasRect.width, canvasRect.height), 0.05, 20, 0.02);
-        // composer.addPass(bloom);
-
         let clock = new THREE.Clock();
-
         function renderLoop() {
             let elapsedTime = clock.getDelta();
-
-            // if (phoneRef.current) {
-            // phoneRef.current.rotateY(0.5 * elapsedTime);
-            // phoneRef.current.rotateX(0.1 * elapsedTime);
-            // }
-
-            // renderer.render(scene, camera);
-            composer.render();
+            renderer.render(scene, camera);
             window.requestAnimationFrame(renderLoop);
         }
 
@@ -301,7 +280,9 @@ export default function Home({ language }: { language: Language }) {
             </div>
             <div className="w-full text-white min-h-screen">
                 <header className="flex items-center flex-col p-10">
-                    <h2 className=" text-4xl font-bold">{language.howWeWork}</h2>
+                    <h2 id="how-we-work" className=" text-4xl font-bold">
+                        {language.howWeWork}
+                    </h2>
                     <p className="text-2xl opacity-50 mt-4">{language.howWeWorkNote}</p>
                 </header>
 
@@ -313,7 +294,9 @@ export default function Home({ language }: { language: Language }) {
                 className="w-full flex flex-col text-white"
                 style={{ background: "url(/blurry-gradient-haikei4.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <header className="flex items-center flex-col p-10">
-                    <h2 className=" text-4xl font-bold">{language.whyUs}</h2>
+                    <h2 id="why-us" className=" text-4xl font-bold">
+                        {language.whyUs}
+                    </h2>
                     <p className="text-2xl opacity-50 mt-4">{language.whyUsNote}</p>
                 </header>
                 <div className="flex justify-center">
@@ -338,7 +321,9 @@ export default function Home({ language }: { language: Language }) {
                     <div className="max-w-7xl w-full">
                         <div className="flex min-h-screen flex-col lg:flex-row">
                             <header className="text-white lg:sticky top-0 left-0 py-20 lg:mr-10 lg:self-start lg:w-2/5">
-                                <h2 className="text-4xl font-bold text-center lg:text-left">{language.ourSolutions}</h2>
+                                <h2 id="our-solutions" className="text-4xl font-bold text-center lg:text-left">
+                                    {language.ourSolutions}
+                                </h2>
                                 <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">{language.ourSolutionsNote}</p>
                             </header>
                             <div className="flex-grow lg:mt-20">

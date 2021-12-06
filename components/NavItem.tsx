@@ -1,6 +1,11 @@
 import React from "react";
 
 export function NavBar() {
+    function scrollToId(id: string) {
+        document.getElementById(id)!.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => (location.hash = id), 1000);
+    }
+
     return (
         <nav className="flex">
             <header className="p-5">
@@ -8,11 +13,10 @@ export function NavBar() {
                 <p className="opacity-50 text-lg">we solve digital challenges</p>
             </header>
             <ul className="flex items-center">
-                <NavItem onClick={() => window.scrollTo({ behavior: "smooth", top: window.innerHeight })}>How we work</NavItem>
-                <NavItem>Why us</NavItem>
-                <NavItem>Our solutions</NavItem>
-                <NavItem>Contact</NavItem>
-                <NavItem>About us</NavItem>
+                <NavItem onClick={() => scrollToId("how-we-work")}>How we work</NavItem>
+                <NavItem onClick={() => scrollToId("why-us")}>Why us</NavItem>
+                <NavItem onClick={() => scrollToId("our-solutions")}>Our solutions</NavItem>
+                <NavItem onClick={() => scrollToId("contact")}>Contact</NavItem>
             </ul>
             <div className="ml-auto flex mx-5 items-center">
                 <ul className="overflow-hidden rounded-lg">
