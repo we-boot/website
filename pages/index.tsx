@@ -305,7 +305,7 @@ export default function Home({ language }: { language: Language }) {
                 <div className="lg:h-80 h-96">
                     <p className="text-2xl text-center opacity-50 mt-16">{language.questionsAnswersNote}</p>
                     <div className="flex justify-center">
-                        <div className="flex items-start justify-center flex-wrap mt-4 max-w-4xl">
+                        <div className="flex items-start justify-center flex-wrap mt-4 max-w-6xl">
                             {language.questionsAnswers.map((e) => (
                                 <QuestionAnswerCard question={e.question} answer={e.answer} />
                             ))}
@@ -343,17 +343,17 @@ export default function Home({ language }: { language: Language }) {
                     backgroundPosition: "center center",
                     backgroundSize: "100%",
                 }}>
-                <div className="max-w-4xl w-full text-white rounded-2xl shadow-xl" style={{ background: "#222" }}>
+                <div className="max-w-4xl w-full text-white md:rounded-2xl md:shadow-xl" style={{ background: "#222" }}>
                     <h2 id="contact" className="text-white text-center text-4xl font-bold my-8">
                         Contact
                     </h2>
-                    <form className="p-4 m-4">
-                        <div className="items-center gap-4" style={{ display: "grid", gridTemplateColumns: "110px 1fr 110px 1fr" }}>
+                    <form className="p-4 md:mx-4 my-4">
+                        <div className="items-center gap-4 grid grid-cols-form-small lg:grid-cols-form">
                             <label htmlFor="contact-email" className="text-base font-bold">
                                 Je e-mail
                             </label>
                             <input
-                                className="px-3 py-2 rounded-xl bg-black bg-opacity-50 text-base focus:outline-purple appearance-none"
+                                className="px-3 min-w-0 py-2 rounded-xl bg-black bg-opacity-50 text-base focus:outline-purple appearance-none"
                                 type="email"
                                 id="contact-email"
                                 name="email"
@@ -362,7 +362,7 @@ export default function Home({ language }: { language: Language }) {
                                 Je naam
                             </label>
                             <input
-                                className="px-3 py-2 rounded-xl bg-black bg-opacity-50 text-base focus:outline-purple appearance-none"
+                                className="px-3 min-w-0 py-2 rounded-xl bg-black bg-opacity-50 text-base focus:outline-purple appearance-none"
                                 type="text"
                                 id="contact-name"
                                 name="name"
@@ -380,7 +380,7 @@ export default function Home({ language }: { language: Language }) {
                             <p className="ml-auto mr-4 opacity-50">We sturen je zo snel mogelijk een antwoord</p>
                             <button
                                 type="submit"
-                                className="px-4 text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
+                                className="px-4 whitespace-nowrap text-black font-bold py-1 rounded-lg text-base hover:opacity-80 bg-white focus:outline-purple">
                                 Verstuur <FontAwesomeIcon icon={faPaperPlane} />
                             </button>
                         </div>
@@ -396,7 +396,7 @@ export default function Home({ language }: { language: Language }) {
 function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.ReactNode }) {
     const [shown, setShown] = useState(false);
     return (
-        <div className="rounded-lg overflow-hidden m-2 flex-grow">
+        <div className="rounded-lg overflow-hidden m-2 flex-grow" style={{ maxWidth: "500px" }}>
             <div className="flex items-center bg-white bg-opacity-10 hover:bg-opacity-20 px-4 py-3 cursor-pointer" onClick={() => setShown(!shown)}>
                 <p className="font-bold text-white text-lg flex-grow whitespace-nowrap">{props.question}</p>
                 <span className="opacity-50 scale-150 transform ml-6 mr-2">

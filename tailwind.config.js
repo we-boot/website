@@ -379,6 +379,8 @@ module.exports = {
         },
         gridTemplateColumns: {
             none: "none",
+            form: "110px 1fr 110px 1fr",
+            "form-small": "95px 1fr",
             1: "repeat(1, minmax(0, 1fr))",
             2: "repeat(2, minmax(0, 1fr))",
             3: "repeat(3, minmax(0, 1fr))",
