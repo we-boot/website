@@ -24,7 +24,8 @@ module.exports = {
             green: colors.emerald,
             blue: colors.blue,
             indigo: colors.indigo,
-            purple: colors.violet,
+            purple: "#5B00E5",
+
             pink: colors.pink,
         },
         spacing: {
@@ -589,6 +590,7 @@ module.exports = {
             none: ["2px solid transparent", "2px"],
             white: ["2px dotted white", "2px"],
             black: ["2px dotted black", "2px"],
+            purple: ["3px solid #5B00E5", "3px"],
         },
         padding: (theme) => theme("spacing"),
         placeholderColor: (theme) => theme("colors"),
@@ -912,7 +914,7 @@ module.exports = {
         objectPosition: ["responsive"],
         opacity: ["responsive", "group-hover", "focus-within", "hover", "focus"],
         order: ["responsive"],
-        outline: ["responsive", "focus-within", "focus"],
+        outline: ["responsive", "focus-within", "focus", "hover"],
         overflow: ["responsive"],
         overscrollBehavior: ["responsive"],
         padding: ["responsive"],
