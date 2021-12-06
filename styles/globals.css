@@ -5,3 +5,8 @@ html,
     width: 100%;
     scroll-behavior: smooth;
 }
+
+.rendered-html li {
+    list-style: circle;
+    margin-left: 2em;
+}

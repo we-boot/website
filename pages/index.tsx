@@ -393,7 +393,7 @@ export default function Home({ language }: { language: Language }) {
     );
 }
 
-function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.ReactNode }) {
+function QuestionAnswerCard(props: { question: React.ReactNode; answer: string }) {
     const [shown, setShown] = useState(false);
     return (
         <div className="rounded-lg overflow-hidden m-2 flex-grow" style={{ maxWidth: "500px" }}>
@@ -404,7 +404,7 @@ function QuestionAnswerCard(props: { question?: React.ReactNode; answer?: React.
                 </span>
             </div>
             <div style={{ maxHeight: shown ? "20vh" : "0px", transition: "400ms" }} className="overflow-hidden">
-                <div className="px-4 py-3 bg-white bg-opacity-10">{props.answer}</div>
+                <div className="px-4 py-3 bg-white bg-opacity-10 rendered-html" dangerouslySetInnerHTML={{ __html: props.answer }}></div>
             </div>
         </div>
     );
