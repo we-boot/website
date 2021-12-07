@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
 body,
 html,
 #__next {
@@ -9,4 +11,8 @@ html,
 .rendered-html li {
     list-style: circle;
     margin-left: 2em;
+}
+
+* {
+    font-family: "Inter", sans-serif;
 }
