@@ -1,6 +1,7 @@
 import React from "react";
+import { Language } from "../translations";
 
-export function NavBar() {
+export function NavBar({ language }: { language: Language }) {
     function scrollToId(id: string) {
         location.hash = id;
         // document.getElementById(id)!.scrollIntoView({ behavior: "smooth" });
@@ -14,10 +15,10 @@ export function NavBar() {
                 <p className="opacity-50 text-lg">we solve digital challenges</p>
             </header>
             <ul className="flex items-center">
-                <NavItem onClick={() => scrollToId("how-we-work")}>How we work</NavItem>
-                <NavItem onClick={() => scrollToId("why-us")}>Why us</NavItem>
-                <NavItem onClick={() => scrollToId("our-solutions")}>Our solutions</NavItem>
-                <NavItem onClick={() => scrollToId("contact")}>Contact</NavItem>
+                <NavItem onClick={() => scrollToId("how-we-work")}>{language.howWeWork}</NavItem>
+                <NavItem onClick={() => scrollToId("why-us")}>{language.whyUs}</NavItem>
+                <NavItem onClick={() => scrollToId("our-solutions")}>{language.ourSolutions}</NavItem>
+                <NavItem onClick={() => scrollToId("contact")}>{language.contact}</NavItem>
             </ul>
             <div className="ml-auto flex mx-5 items-center">
                 <ul className="overflow-hidden rounded-lg">

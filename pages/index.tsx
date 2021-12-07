@@ -295,7 +295,7 @@ export default function Home({ language }: { language: Language }) {
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                 }}>
-                <NavBar />
+                <NavBar language={language} />
                 <div className="overflow-x-hidden absolute top-0 left-0 w-screen h-screen flex flex-col lg:flex-row pointer-events-none">
                     <canvas className="origin-center h-2/3 lg:h-full w-full lg:w-1/2 flex-shrink" ref={canvasRef} />
                     <div className="flex justify-center lg:items-center h-1/3 lg:h-full m-2 w-full lg:w-1/2 flex-shrink">
