@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import AWS from "aws-sdk";
 
-const { AWS_KEY_ID, AWS_KEY_SECRET, AWS_DESTINATION_EMAIL, AWS_SOURCE_EMAIL } = process.env;
+const { AWS_KEY_ID, AWS_KEY_SECRET, AWS_REGION, AWS_DESTINATION_EMAIL, AWS_SOURCE_EMAIL } = process.env;
 
 AWS.config.update({
+    region: AWS_REGION!,
     credentials: {
         accessKeyId: AWS_KEY_ID!,
         secretAccessKey: AWS_KEY_SECRET!,
