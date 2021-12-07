@@ -302,7 +302,7 @@ export default function Home({ language }: { language: Language }) {
                 </div>
             </div>
             <div id="how-we-work" className="w-full text-white min-h-screen">
-                <header className="flex items-center flex-col p-10">
+                <header className="flex items-center flex-col p-10 mb-10">
                     <h2 className=" text-4xl font-bold">{language.howWeWork}</h2>
                     <p className="text-2xl opacity-50 mt-4">{language.howWeWorkNote}</p>
                 </header>
