@@ -354,7 +354,7 @@ export default function Home({ language }: { language: Language }) {
                 <div className="w-full flex justify-center">
                     <div className="max-w-7xl w-full">
                         <div className="flex min-h-screen flex-col lg:flex-row">
-                            <header className="text-white lg:sticky top-0 left-0 p-20 lg:mr-10 lg:self-start lg:w-2/5">
+                            <header className="text-white lg:sticky top-0 left-0 p-20 lg:mr-10 lg:self-start lg:w-3/5">
                                 <h2 className="text-4xl font-bold text-center lg:text-left">{language.ourSolutions}</h2>
                                 <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">{language.ourSolutionsNote}</p>
                             </header>
