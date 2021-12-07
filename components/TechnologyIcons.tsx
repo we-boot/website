@@ -57,10 +57,14 @@ export function TechologyStrip() {
             onMouseEnter={() => technologyTween.current!.pause()}
             onMouseLeave={() => technologyTween.current!.resume()}>
             {TECH_ICONS.map((e, i) => (
-                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
+                <TechnologyIcon key={i} title={e.name}>
+                    {e.icon}
+                </TechnologyIcon>
             ))}
             {TECH_ICONS.map((e, i) => (
-                <TechnologyIcon title={e.name}>{e.icon}</TechnologyIcon>
+                <TechnologyIcon key={i} title={e.name}>
+                    {e.icon}
+                </TechnologyIcon>
             ))}
         </div>
     );
@@ -128,8 +132,8 @@ export function DockerIcon() {
     return (
         <svg viewBox="0 0 128 128">
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#3A4D54"
                 d="M73.8 50.8h11.3v11.5h5.7c2.6 0 5.3-.5 7.8-1.3 1.2-.4 2.6-1 3.8-1.7-1.6-2.1-2.4-4.7-2.6-7.3-.3-3.5.4-8.1 2.8-10.8l1.2-1.4 1.4 1.1c3.6 2.9 6.5 6.8 7.1 11.4 4.3-1.3 9.3-1 13.1 1.2l1.5.9-.8 1.6c-3.2 6.2-9.9 8.2-16.4 7.8-9.8 24.3-31 35.8-56.8 35.8-13.3 0-25.5-5-32.5-16.8l-.1-.2-1-2.1c-2.4-5.2-3.1-10.9-2.6-16.6l.2-1.7h9.6V50.8h11.3V39.6h22.5V28.3h13.5v22.5z"></path>
             <path
@@ -145,48 +149,48 @@ export function DockerIcon() {
                 fill="#019BC6"
                 d="M23.5 71.8c1.3 5.8 4.3 10.4 8.8 13.5 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5.2 1.2-8.6 1.4 8.5 4.4 20.8 4.3 34.9-1.1 8.5-3.3 16.8-8.2 24.2-14.1H23.5z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#00ACD3"
                 d="M28.4 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm3-12h9.8v9.8h-9.8v-9.8zm.9.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#23C2EE"
                 d="M39.6 52.7h9.8v9.8h-9.8v-9.8zm.9.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#00ACD3"
                 d="M50.9 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#23C2EE"
                 d="M50.9 41.5h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm3.1 10.4H72v9.8h-9.8v-9.8zm.8.8h.8v8.1H63v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#00ACD3"
                 d="M62.2 41.5H72v9.8h-9.8v-9.8zm.8.8h.8v8.1H63v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#23C2EE"
                 d="M62.2 30.2H72V40h-9.8v-9.8zm.8.8h.8v8.1H63V31zm1.5 0h.8v8.1h-.8V31zm1.4 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#00ACD3"
                 d="M73.5 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#D4EEF1"
                 d="M48.8 78.3c1.5 0 2.7 1.2 2.7 2.7 0 1.5-1.2 2.7-2.7 2.7-1.5 0-2.7-1.2-2.7-2.7 0-1.5 1.2-2.7 2.7-2.7"></path>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#3A4D54"
                 d="M48.8 79.1c.2 0 .5 0 .7.1-.2.1-.4.4-.4.7 0 .4.4.8.8.8.3 0 .6-.2.7-.4.1.2.1.5.1.7 0 1.1-.9 1.9-1.9 1.9-1.1 0-1.9-.9-1.9-1.9 0-1 .8-1.9 1.9-1.9M1.1 72.8h125.4c-2.7-.7-8.6-1.6-7.7-5.2-5 5.7-16.9 4-20 1.2-3.4 4.9-23 3-24.3-.8-4.2 5-17.3 5-21.5 0-1.4 3.8-21 5.7-24.3.8-3 2.8-15 4.5-20-1.2 1.1 3.5-4.9 4.5-7.6 5.2"></path>
             <path
@@ -313,15 +317,15 @@ export function GitIcon() {
 export function SocketIOIcon() {
     return (
         <svg viewBox="0 0 128 128">
-            <g fill="white" fill-rule="evenodd">
+            <g fill="white" fillRule="evenodd">
                 <path
                     // style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"
                     d="M63.951.001C28.696.001.001 28.696.001 63.951s28.695 63.95 63.95 63.95 63.95-28.695 63.95-63.95S99.206.001 63.95.001zm0 10.679c29.484 0 53.272 23.787 53.272 53.271 0 29.485-23.788 53.272-53.272 53.272-29.484 0-53.272-23.787-53.272-53.272 0-29.484 23.788-53.271 53.272-53.271z"
                     color="#000"
-                    font-weight="400"
-                    font-family="sans-serif"
+                    fontWeight="400"
+                    fontFamily="sans-serif"
                     overflow="visible"
-                    fill-rule="nonzero"></path>
+                    fillRule="nonzero"></path>
                 <path d="M48.39 60.716c14.004-11.44 27.702-23.278 42.011-34.384-7.505 11.533-15.224 22.913-22.729 34.445-6.437.03-12.875.03-19.282-.061zM60.228 67.092c6.468 0 12.905 0 19.342.092-14.095 11.38-27.732 23.309-42.071 34.384 7.505-11.533 15.224-22.943 22.729-34.476z"></path>
             </g>
         </svg>
@@ -331,7 +335,7 @@ export function SocketIOIcon() {
 export function ThreeJSIcon() {
     return (
         <svg viewBox="0 0 128 128">
-            <g font-weight="400" font-family="sans-serif">
+            <g fontWeight="400" fontFamily="sans-serif">
                 <path
                     color="white"
                     // style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"
@@ -403,8 +407,8 @@ export function LinuxIcon() {
                 r="43.267"
                 gradientTransform="matrix(.7 0 0 .35 782.303 444.575)"
                 gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-opacity=".502"></stop>
-                <stop offset="1" stop-opacity="0"></stop>
+                <stop offset="0" stopOpacity=".502"></stop>
+                <stop offset="1" stopOpacity="0"></stop>
             </radialGradient>
             <path
                 fill="url(#linux-original-a)"
@@ -416,8 +420,8 @@ export function LinuxIcon() {
                 r="43.267"
                 gradientTransform="matrix(.719 0 0 .35 595.327 443.952)"
                 gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-opacity=".502"></stop>
-                <stop offset="1" stop-opacity="0"></stop>
+                <stop offset="0" stopOpacity=".502"></stop>
+                <stop offset="1" stopOpacity="0"></stop>
             </radialGradient>
             <path
                 fill="url(#linux-original-b)"
@@ -2455,9 +2459,9 @@ export function LinuxIcon() {
                     x2="-240.246"
                     y2="-130.856"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#FAC700"></stop>
-                    <stop offset=".415" stop-color="#F7C400"></stop>
-                    <stop offset="1" stop-color="#F7C400"></stop>
+                    <stop offset="0" stopColor="#FAC700"></stop>
+                    <stop offset=".415" stopColor="#F7C400"></stop>
+                    <stop offset="1" stopColor="#F7C400"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-c)"
@@ -2470,9 +2474,9 @@ export function LinuxIcon() {
                     x2="-240.258"
                     y2="-130.857"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#F6C200"></stop>
-                    <stop offset=".415" stop-color="#EFBC00"></stop>
-                    <stop offset="1" stop-color="#EFBC00"></stop>
+                    <stop offset="0" stopColor="#F6C200"></stop>
+                    <stop offset=".415" stopColor="#EFBC00"></stop>
+                    <stop offset="1" stopColor="#EFBC00"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-d)"
@@ -2485,9 +2489,9 @@ export function LinuxIcon() {
                     x2="-240.269"
                     y2="-130.859"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#F1BD00"></stop>
-                    <stop offset=".415" stop-color="#E8B500"></stop>
-                    <stop offset="1" stop-color="#E8B500"></stop>
+                    <stop offset="0" stopColor="#F1BD00"></stop>
+                    <stop offset=".415" stopColor="#E8B500"></stop>
+                    <stop offset="1" stopColor="#E8B500"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-e)"
@@ -2500,9 +2504,9 @@ export function LinuxIcon() {
                     x2="-240.282"
                     y2="-130.86"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#EDB800"></stop>
-                    <stop offset=".415" stop-color="#E0AD00"></stop>
-                    <stop offset="1" stop-color="#E0AD00"></stop>
+                    <stop offset="0" stopColor="#EDB800"></stop>
+                    <stop offset=".415" stopColor="#E0AD00"></stop>
+                    <stop offset="1" stopColor="#E0AD00"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-f)"
@@ -2515,9 +2519,9 @@ export function LinuxIcon() {
                     x2="-240.292"
                     y2="-130.862"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#E9B300"></stop>
-                    <stop offset=".415" stop-color="#D8A500"></stop>
-                    <stop offset="1" stop-color="#D8A500"></stop>
+                    <stop offset="0" stopColor="#E9B300"></stop>
+                    <stop offset=".415" stopColor="#D8A500"></stop>
+                    <stop offset="1" stopColor="#D8A500"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-g)"
@@ -2530,9 +2534,9 @@ export function LinuxIcon() {
                     x2="-240.304"
                     y2="-130.863"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#E4AE00"></stop>
-                    <stop offset=".415" stop-color="#D19E00"></stop>
-                    <stop offset="1" stop-color="#D19E00"></stop>
+                    <stop offset="0" stopColor="#E4AE00"></stop>
+                    <stop offset=".415" stopColor="#D19E00"></stop>
+                    <stop offset="1" stopColor="#D19E00"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-h)"
@@ -2545,9 +2549,9 @@ export function LinuxIcon() {
                     x2="-240.315"
                     y2="-130.864"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#E0A900"></stop>
-                    <stop offset=".415" stop-color="#C99600"></stop>
-                    <stop offset="1" stop-color="#C99600"></stop>
+                    <stop offset="0" stopColor="#E0A900"></stop>
+                    <stop offset=".415" stopColor="#C99600"></stop>
+                    <stop offset="1" stopColor="#C99600"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-i)"
@@ -2560,9 +2564,9 @@ export function LinuxIcon() {
                     x2="-240.325"
                     y2="-130.866"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#DCA400"></stop>
-                    <stop offset=".415" stop-color="#C18E00"></stop>
-                    <stop offset="1" stop-color="#C18E00"></stop>
+                    <stop offset="0" stopColor="#DCA400"></stop>
+                    <stop offset=".415" stopColor="#C18E00"></stop>
+                    <stop offset="1" stopColor="#C18E00"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-j)"
@@ -2575,9 +2579,9 @@ export function LinuxIcon() {
                     x2="-240.336"
                     y2="-130.866"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#D79F00"></stop>
-                    <stop offset=".415" stop-color="#BA8700"></stop>
-                    <stop offset="1" stop-color="#BA8700"></stop>
+                    <stop offset="0" stopColor="#D79F00"></stop>
+                    <stop offset=".415" stopColor="#BA8700"></stop>
+                    <stop offset="1" stopColor="#BA8700"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-k)"
@@ -2590,9 +2594,9 @@ export function LinuxIcon() {
                     x2="-240.346"
                     y2="-130.867"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#D39B00"></stop>
-                    <stop offset=".415" stop-color="#B27F00"></stop>
-                    <stop offset="1" stop-color="#B27F00"></stop>
+                    <stop offset="0" stopColor="#D39B00"></stop>
+                    <stop offset=".415" stopColor="#B27F00"></stop>
+                    <stop offset="1" stopColor="#B27F00"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-l)"
@@ -2605,9 +2609,9 @@ export function LinuxIcon() {
                     x2="-240.357"
                     y2="-130.868"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#CF9600"></stop>
-                    <stop offset=".415" stop-color="#a70"></stop>
-                    <stop offset="1" stop-color="#a70"></stop>
+                    <stop offset="0" stopColor="#CF9600"></stop>
+                    <stop offset=".415" stopColor="#a70"></stop>
+                    <stop offset="1" stopColor="#a70"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-m)"
@@ -2620,9 +2624,9 @@ export function LinuxIcon() {
                     x2="-240.367"
                     y2="-130.869"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#CA9100"></stop>
-                    <stop offset=".415" stop-color="#A37000"></stop>
-                    <stop offset="1" stop-color="#A37000"></stop>
+                    <stop offset="0" stopColor="#CA9100"></stop>
+                    <stop offset=".415" stopColor="#A37000"></stop>
+                    <stop offset="1" stopColor="#A37000"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-n)"
@@ -2635,9 +2639,9 @@ export function LinuxIcon() {
                     x2="-240.377"
                     y2="-130.869"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#C68C00"></stop>
-                    <stop offset=".415" stop-color="#9B6800"></stop>
-                    <stop offset="1" stop-color="#9B6800"></stop>
+                    <stop offset="0" stopColor="#C68C00"></stop>
+                    <stop offset=".415" stopColor="#9B6800"></stop>
+                    <stop offset="1" stopColor="#9B6800"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-o)"
@@ -2650,9 +2654,9 @@ export function LinuxIcon() {
                     x2="-240.387"
                     y2="-130.87"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#C28700"></stop>
-                    <stop offset=".415" stop-color="#936000"></stop>
-                    <stop offset="1" stop-color="#936000"></stop>
+                    <stop offset="0" stopColor="#C28700"></stop>
+                    <stop offset=".415" stopColor="#936000"></stop>
+                    <stop offset="1" stopColor="#936000"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-p)"
@@ -2665,9 +2669,9 @@ export function LinuxIcon() {
                     x2="-240.396"
                     y2="-130.871"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#BD8200"></stop>
-                    <stop offset=".415" stop-color="#8C5900"></stop>
-                    <stop offset="1" stop-color="#8C5900"></stop>
+                    <stop offset="0" stopColor="#BD8200"></stop>
+                    <stop offset=".415" stopColor="#8C5900"></stop>
+                    <stop offset="1" stopColor="#8C5900"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-q)"
@@ -2680,9 +2684,9 @@ export function LinuxIcon() {
                     x2="-240.406"
                     y2="-130.871"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#B97D00"></stop>
-                    <stop offset=".415" stop-color="#845100"></stop>
-                    <stop offset="1" stop-color="#845100"></stop>
+                    <stop offset="0" stopColor="#B97D00"></stop>
+                    <stop offset=".415" stopColor="#845100"></stop>
+                    <stop offset="1" stopColor="#845100"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-r)"
@@ -2695,9 +2699,9 @@ export function LinuxIcon() {
                     x2="-240.415"
                     y2="-130.872"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#B57800"></stop>
-                    <stop offset=".415" stop-color="#7C4900"></stop>
-                    <stop offset="1" stop-color="#7C4900"></stop>
+                    <stop offset="0" stopColor="#B57800"></stop>
+                    <stop offset=".415" stopColor="#7C4900"></stop>
+                    <stop offset="1" stopColor="#7C4900"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-s)"
@@ -2710,9 +2714,9 @@ export function LinuxIcon() {
                     x2="-240.424"
                     y2="-130.872"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#B07300"></stop>
-                    <stop offset=".415" stop-color="#754200"></stop>
-                    <stop offset="1" stop-color="#754200"></stop>
+                    <stop offset="0" stopColor="#B07300"></stop>
+                    <stop offset=".415" stopColor="#754200"></stop>
+                    <stop offset="1" stopColor="#754200"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-t)"
@@ -2725,9 +2729,9 @@ export function LinuxIcon() {
                     x2="-240.433"
                     y2="-130.872"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#AC6E00"></stop>
-                    <stop offset=".415" stop-color="#6D3A00"></stop>
-                    <stop offset="1" stop-color="#6D3A00"></stop>
+                    <stop offset="0" stopColor="#AC6E00"></stop>
+                    <stop offset=".415" stopColor="#6D3A00"></stop>
+                    <stop offset="1" stopColor="#6D3A00"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-u)"
@@ -2740,9 +2744,9 @@ export function LinuxIcon() {
                     x2="-240.441"
                     y2="-130.873"
                     gradientTransform="translate(375.489 179.416) scale(1.234)">
-                    <stop offset="0" stop-color="#A86A00"></stop>
-                    <stop offset=".415" stop-color="#663200"></stop>
-                    <stop offset="1" stop-color="#663200"></stop>
+                    <stop offset="0" stopColor="#A86A00"></stop>
+                    <stop offset=".415" stopColor="#663200"></stop>
+                    <stop offset="1" stopColor="#663200"></stop>
                 </linearGradient>
                 <path
                     fill="url(#linux-original-v)"
