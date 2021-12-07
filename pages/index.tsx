@@ -273,11 +273,9 @@ export default function Home({ language }: { language: Language }) {
                     </div>
                 </div>
             </div>
-            <div className="w-full text-white min-h-screen">
+            <div id="how-we-work" className="w-full text-white min-h-screen">
                 <header className="flex items-center flex-col p-10">
-                    <h2 id="how-we-work" className=" text-4xl font-bold">
-                        {language.howWeWork}
-                    </h2>
+                    <h2 className=" text-4xl font-bold">{language.howWeWork}</h2>
                     <p className="text-2xl opacity-50 mt-4">{language.howWeWorkNote}</p>
                 </header>
 
@@ -286,12 +284,11 @@ export default function Home({ language }: { language: Language }) {
                 </div>
             </div>
             <div
+                id="why-us"
                 className="w-full flex flex-col text-white"
                 style={{ background: "url(/blurry-gradient-haikei4.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <header className="flex items-center flex-col p-10">
-                    <h2 id="why-us" className=" text-4xl font-bold">
-                        {language.whyUs}
-                    </h2>
+                    <h2 className=" text-4xl font-bold">{language.whyUs}</h2>
                     <p className="text-2xl opacity-50 mt-4">{language.whyUsNote}</p>
                 </header>
                 <div className="flex justify-center">
@@ -311,14 +308,12 @@ export default function Home({ language }: { language: Language }) {
                     <TechologyStrip />
                 </div>
             </div>
-            <div className="w-full">
+            <div id="our-solutions" className="w-full">
                 <div className="w-full flex justify-center">
                     <div className="max-w-7xl w-full">
                         <div className="flex min-h-screen flex-col lg:flex-row">
                             <header className="text-white lg:sticky top-0 left-0 py-20 lg:mr-10 lg:self-start lg:w-2/5">
-                                <h2 id="our-solutions" className="text-4xl font-bold text-center lg:text-left">
-                                    {language.ourSolutions}
-                                </h2>
+                                <h2 className="text-4xl font-bold text-center lg:text-left">{language.ourSolutions}</h2>
                                 <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">{language.ourSolutionsNote}</p>
                             </header>
                             <div className="flex-grow lg:mt-20">
@@ -331,6 +326,7 @@ export default function Home({ language }: { language: Language }) {
                 </div>
             </div>
             <div
+                id="contact"
                 className="w-full flex justify-center items-center"
                 style={{
                     minHeight: "70vh",
@@ -341,9 +337,7 @@ export default function Home({ language }: { language: Language }) {
                 }}>
                 <div className="max-w-4xl w-full text-white md:rounded-2xl md:shadow-xl" style={{ background: "#222" }}>
                     <header className="my-8">
-                        <h2 id="contact" className="text-white text-center text-4xl font-bold ">
-                            {language.contact}
-                        </h2>
+                        <h2 className="text-white text-center text-4xl font-bold ">{language.contact}</h2>
                         <p className="text-white text-opacity-50 text-center text-2xl">{language.contactNote}</p>
                     </header>
                     <form className="p-4 md:mx-4 my-4">
