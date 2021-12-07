@@ -16,3 +16,16 @@ html,
 * {
     font-family: "Inter", sans-serif;
 }
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pop-animation {
+    animation: pop 500ms;
+}

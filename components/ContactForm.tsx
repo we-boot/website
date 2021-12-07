@@ -1,4 +1,4 @@
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Language } from "../translations";
@@ -10,6 +10,7 @@ export function ContactForm({ language }: { language: Language }) {
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
     const [valid, setValid] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
     async function submit() {
         if (!valid) return;
@@ -27,7 +28,7 @@ export function ContactForm({ language }: { language: Language }) {
         });
 
         if (res.ok) {
-            alert("Submitted!");
+            setSubmitted(true);
         } else {
             setValid(true);
         }
@@ -37,6 +38,19 @@ export function ContactForm({ language }: { language: Language }) {
         let valid = name.length > 2 && name.length < 100 && EMAIL_REGEX.test(email) && description.length > 10 && description.length < 30000;
         setValid(valid);
     }, [name, email, description]);
+
+    if (submitted) {
+        return (
+            <div className="h-80 flex justify-center items-center text-green-400 pop-animation">
+                <div className="p-8 bg-green-600 bg-opacity-20 rounded-lg mb-16">
+                    <p className="text-4xl text-center font-bold">
+                        {language.contactSubmitted} <FontAwesomeIcon icon={faCheckCircle} />
+                    </p>
+                    <p className="text-2xl text-center opacity-50">{language.contactSubmittedNote}</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <form
