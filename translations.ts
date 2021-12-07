@@ -83,7 +83,7 @@ export const LANGUAGE: Languages = {
             {
                 question: "Accepteer je simpele projecten?",
                 answer:
-                    "Misschien, je kan je idee proberen versturen, Ik laat je weten of ik geïnteresseerd ben. We zullen de volgende types projecten waarschijnlijk niet accepteren: " +
+                    "Misschien, je kan je idee proberen versturen, we laten je weten of we geïnteresseerd zijn. We zullen de volgende types projecten waarschijnlijk niet accepteren: " +
                     "<ul><li>Websites met bijna geen onderdelen, bijvoorbeeld, een WordPress website.</li><li>Software dat het weboot merk zou kunnen schaden.</li></ul>",
             },
         ],
