@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import AWS from "aws-sdk";
+import { EMAIL_REGEX } from "../../types";
 
 const { AWS_KEY_ID, AWS_KEY_SECRET, AWS_REGION, AWS_DESTINATION_EMAIL, AWS_SOURCE_EMAIL } = process.env;
 
@@ -22,8 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             typeof data.description !== "string" ||
             data.name.length < 1 ||
             data.name.length > 150 ||
-            data.email.length < 5 ||
-            data.email.length > 150 ||
+            !EMAIL_REGEX.test(data.email) ||
             data.description.length < 10 ||
             data.description.length > 30000
         ) {

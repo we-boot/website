@@ -841,7 +841,7 @@ module.exports = {
         backgroundClip: ["responsive"],
         backgroundColor: ["responsive", "dark", "group-hover", "focus-within", "hover", "focus"],
         backgroundImage: ["responsive"],
-        backgroundOpacity: ["responsive", "dark", "group-hover", "focus-within", "hover", "focus"],
+        backgroundOpacity: ["responsive", "dark", "group-hover", "focus-within", "hover", "focus", "disabled"],
         backgroundPosition: ["responsive"],
         backgroundRepeat: ["responsive"],
         backgroundSize: ["responsive"],
