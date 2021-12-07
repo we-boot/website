@@ -1,14 +1,8 @@
 import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { GLTFLoader, GLTFParser } from "three/examples/jsm/loaders/GLTFLoader";
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import { BloomPass } from "three/examples/jsm/postprocessing/BloomPass";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import gsap, { Expo, Power0 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faEnvelope, faMousePointer, faPaperPlane, faStore, faTicketAlt } from "@fortawesome/free-solid-svg-icons";

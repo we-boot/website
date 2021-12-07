@@ -113,18 +113,23 @@ export const LANGUAGE: Languages = {
         spotlightItems: [
             {
                 type: "phone",
-                imageUrl: "/groen.png",
+                imageUrl: "/work/kooplokaal.png",
                 text: "automatisatie software",
             },
             {
                 type: "phone",
-                imageUrl: "/inspections.png",
+                imageUrl: "/work/diginspect.png",
                 text: "productiviteits tools",
             },
             {
                 type: "computer",
-                imageUrl: "/desktop.png",
+                imageUrl: "/work/consumerhouse-projects.png",
                 text: "data gedreven dashboards",
+            },
+            {
+                type: "phone",
+                imageUrl: "/work/consumerhouse-research-mobile.jpg",
+                text: "mobiele applicaties",
             },
         ],
     },
@@ -216,18 +221,23 @@ export const LANGUAGE: Languages = {
         spotlightItems: [
             {
                 type: "phone",
-                imageUrl: "/groen.png",
+                imageUrl: "/work/kooplokaal.png",
                 text: "automatisation software",
             },
             {
                 type: "phone",
-                imageUrl: "/inspections.png",
+                imageUrl: "/work/diginspect.png",
                 text: "productivity tools",
             },
             {
                 type: "computer",
-                imageUrl: "/desktop.png",
+                imageUrl: "/work/consumerhouse-projects.png",
                 text: "data driven dashboards",
+            },
+            {
+                type: "phone",
+                imageUrl: "/work/consumerhouse-research-mobile.jpg",
+                text: "mobile applications",
             },
         ],
     },
