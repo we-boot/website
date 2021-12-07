@@ -27,6 +27,7 @@ export default function Home({ language }: { language: Language }) {
     const monitorRef = useRef<THREE.Group>();
     const monitorScreenRef = useRef<THREE.MeshStandardMaterial>();
     const spotlightIndexRef = useRef<number>(2);
+    const [showNavbar, setShowNavbar] = useState(false);
 
     async function showSpotlightItem(spotlight: SpotlightItem) {
         // Update phone texture
@@ -226,6 +227,26 @@ export default function Home({ language }: { language: Language }) {
     }
 
     useEffect(() => {
+        function onScroll() {
+            if (showNavbar) {
+                if (window.scrollY < window.innerHeight) {
+                    setShowNavbar(false);
+                }
+            } else {
+                if (window.scrollY >= window.innerHeight) {
+                    setShowNavbar(true);
+                }
+            }
+        }
+
+        window.addEventListener("scroll", onScroll);
+
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        };
+    }, [showNavbar]);
+
+    useEffect(() => {
         if (canvasRef.current) {
             renderCanvas();
         }
@@ -238,14 +259,21 @@ export default function Home({ language }: { language: Language }) {
 
     return (
         <div style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat", backgroundPosition: "0 50px" }}>
-            {/* <div
-                className="text-white fixed top-0 left-0 w-full z-10"
-                style={{
-                    background: "#30007888",
-                    backdropFilter: "blur(20px)",
-                }}>
-                <NavBar />
-            </div> */}
+            <div
+                className={"text-white fixed top-0 left-0 w-full z-10 transition " + (showNavbar ? "opacity-100" : "opacity-0 pointer-events-none")}
+                // style={{
+                //     background: "#30007888",
+                //     backdropFilter: "blur(20px)",
+                // }}
+            >
+                <header className="p-5">
+                    <a href="#">
+                        <h1 className="font-bold text-2xl leading-4">weboot</h1>
+                    </a>
+                    {/* <p className="opacity-50 text-lg">we solve digital challenges</p> */}
+                </header>
+                {/* <NavBar /> */}
+            </div>
             <div
                 className="h-screen w-full flex flex-col relative text-white max-w-full overflow-x-hidden "
                 style={{
