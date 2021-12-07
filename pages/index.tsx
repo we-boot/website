@@ -341,7 +341,7 @@ export default function Home({ language }: { language: Language }) {
                     <div className="flex justify-center">
                         <div className="flex items-start justify-center flex-wrap mt-4 max-w-6xl">
                             {language.questionsAnswers.map((e) => (
-                                <QuestionAnswerCard question={e.question} answer={e.answer} />
+                                <QuestionAnswerCard key={e.question} question={e.question} answer={e.answer} />
                             ))}
                         </div>
                     </div>
@@ -410,7 +410,7 @@ function QuestionAnswerCard(props: { question: React.ReactNode; answer: string }
 
 function WorkCard(props: { title: string; imageUrls: string[]; description: string; url: string }) {
     return (
-        <a href={props.url} target="_blank">
+        <a href={props.url} target="_blank" rel="noreferrer">
             <div className="text-white flex-grow mb-8 p-4 lg:p-8 hover:bg-white hover:bg-opacity-10 rounded-xl">
                 <h3 className="text-2xl mb-2 font-bold">{props.title}</h3>
                 {props.description && <p className="opacity-50 mb-5 text-base">{props.description}</p>}
