@@ -30,6 +30,12 @@ export type Languages = {
 
 export const LANGUAGE: Languages = {
     nl: {
+        headDescription: "Wij lossen digitale uitdagingen op door software te bouwen.",
+        headKeywords:
+            "software freelancing, digitaal advies, software advies, mobile apps, app ontwikkeling, software ontwikkeling, software op maat, apps op maat, web ontwikkeling, programmeren, productiveits tools, automatisatie software, automatisatie, data driven",
+        headUrl: "https://weboot.nl/nl",
+        headImage: "https://weboot.nl/thumbnail.png",
+
         weBuild: "Wij bouwen professionele",
         scrollDown: "Scroll voor meer informatie",
         howWeWork: "Hoe wij werken",
@@ -136,6 +142,12 @@ export const LANGUAGE: Languages = {
         ],
     },
     "en-US": {
+        headDescription: "We solve digital challenges by building software.",
+        headKeywords:
+            "software freelancing, mobile apps, mobile app development, software development, custom software, web development, programming, productivity tools, automatisation software, data driven",
+        headUrl: "https://weboot.nl/en-US",
+        headImage: "https://weboot.nl/thumbnail.png",
+
         weBuild: "We build professional",
         scrollDown: "Scroll down for more info",
         howWeWork: "How we work",

@@ -15,6 +15,7 @@ import { TechologyStrip } from "../components/TechnologyIcons";
 import { Language, LANGUAGE, SpotlightItem } from "../translations";
 import { Button } from "../components/Button";
 import { ContactForm } from "../components/ContactForm";
+import Head from "next/head";
 
 const MONITOR_SCALE = 0.95;
 const PHONE_SCALE = 1.2;
@@ -260,6 +261,18 @@ export default function Home({ language }: { language: Language }) {
 
     return (
         <div style={{ background: "url(/dot2.png)", backgroundRepeat: "repeat", backgroundPosition: "0 50px" }}>
+            <Head>
+                <title>weboot software</title>
+                <meta name="keywords" content={language.headKeywords} />
+                <meta name="description" content={language.headDescription} />
+                <meta name="theme-color" content="#5B00E5" />
+                <meta name="og:title" content="weboot" />
+                <meta name="og:description" content={language.headDescription} />
+                <meta name="og:url" content={language.headUrl} />
+                <meta name="og:image" content={language.headImage} />
+                <link rel="icon" href="/icon.png" />
+                <link rel="apple-touch-icon" href="/icon.png" />
+            </Head>
             <div
                 className={"text-white fixed top-0 left-0 w-full z-10 transition " + (showNavbar ? "opacity-100" : "opacity-0 pointer-events-none")}
                 // style={{
@@ -341,7 +354,7 @@ export default function Home({ language }: { language: Language }) {
                 <div className="w-full flex justify-center">
                     <div className="max-w-7xl w-full">
                         <div className="flex min-h-screen flex-col lg:flex-row">
-                            <header className="text-white lg:sticky top-0 left-0 py-20 lg:mr-10 lg:self-start lg:w-2/5">
+                            <header className="text-white lg:sticky top-0 left-0 p-20 lg:mr-10 lg:self-start lg:w-2/5">
                                 <h2 className="text-4xl font-bold text-center lg:text-left">{language.ourSolutions}</h2>
                                 <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">{language.ourSolutionsNote}</p>
                             </header>
