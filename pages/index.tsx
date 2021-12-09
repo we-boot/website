@@ -274,19 +274,15 @@ export default function Home({ language }: { language: Language }) {
                 <link rel="apple-touch-icon" href="/icon.png" />
             </Head>
             <div
-                className={"text-white fixed top-0 left-0 w-full z-10 transition " + (showNavbar ? "opacity-100" : "opacity-0 pointer-events-none")}
-                // style={{
-                //     background: "#30007888",
-                //     backdropFilter: "blur(20px)",
-                // }}
-            >
+                className={
+                    "text-white from-black to-transparent bg-gradient-to-b fixed top-0 left-0 w-full z-10 transition " +
+                    (showNavbar ? "opacity-100" : "opacity-0 pointer-events-none")
+                }>
                 <header className="p-5">
                     <a href="#">
                         <h1 className="font-bold text-2xl leading-4">weboot</h1>
                     </a>
-                    {/* <p className="opacity-50 text-lg">we solve digital challenges</p> */}
                 </header>
-                {/* <NavBar /> */}
             </div>
             <div
                 className="h-screen w-full flex flex-col relative text-white max-w-full overflow-x-hidden "
@@ -298,7 +294,7 @@ export default function Home({ language }: { language: Language }) {
                 <NavBar language={language} />
                 <div className="overflow-x-hidden absolute top-0 left-0 w-screen h-screen flex flex-col lg:flex-row pointer-events-none">
                     <canvas className="origin-center h-2/3 lg:h-full w-full lg:w-1/2 flex-shrink" ref={canvasRef} />
-                    <div className="flex justify-center lg:items-center h-1/3 lg:h-full m-2 w-full lg:w-1/2 flex-shrink">
+                    <div className="flex justify-center lg:items-center h-1/3 lg:h-full m-2 lg:w-1/2 flex-shrink">
                         <div className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center lg:text-right ">
                             <p>{language.weBuild}</p>
                             <p ref={textRef}></p>
@@ -354,7 +350,7 @@ export default function Home({ language }: { language: Language }) {
                 <div className="w-full flex justify-center">
                     <div className="max-w-7xl w-full">
                         <div className="flex min-h-screen flex-col lg:flex-row">
-                            <header className="text-white lg:sticky top-0 left-0 p-20 lg:mr-10 lg:self-start lg:w-3/5">
+                            <header className="text-white lg:sticky top-0 left-0 lg:px-20 py-20 lg:mr-10 lg:self-start lg:w-3/5">
                                 <h2 className="text-4xl font-bold text-center lg:text-left">{language.ourSolutions}</h2>
                                 <p className="text-2xl opacity-50 mt-4 text-center lg:text-left">{language.ourSolutionsNote}</p>
                             </header>

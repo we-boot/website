@@ -4,15 +4,13 @@ import { Language } from "../translations";
 export function NavBar({ language }: { language: Language }) {
     function scrollToId(id: string) {
         location.hash = id;
-        // document.getElementById(id)!.scrollIntoView({ behavior: "smooth" });
-        // setTimeout(() => (location.hash = id), 1000);
     }
 
     return (
         <nav className="flex">
             <header className="p-5">
                 <h1 className="font-bold text-2xl leading-4">weboot</h1>
-                <p className="opacity-50 text-lg">we solve digital challenges</p>
+                <p className="opacity-50 lg:text-lg md:text-base text-sm">we solve digital challenges</p>
             </header>
             <ul className="flex items-center">
                 <NavItem onClick={() => scrollToId("how-we-work")}>{language.howWeWork}</NavItem>
