@@ -91,15 +91,21 @@ export const LANGUAGE: Languages = {
         ourSolutionsNote: "Software die we gebouwd hebben.",
         solutions: [
             {
+                title: "TrinceBio",
+                description: "Hun nieuwe website.",
+                url: "https://trincebio.com/",
+                imageUrls: ["/work/trincebio.png"],
+            },
+            {
                 title: "ConsumerHouse Onderzoeken",
-                description: "ConsumerHouse wou een manier om het rekruteren van respondenten te automatiseren.",
+                description: "ConsumerHouse zocht een manier om het rekruteren van respondenten te automatiseren.",
                 url: "https://onderzoeken-consumerhouse.be/",
                 imageUrls: ["/work/consumerhouse-research.png"],
             },
             {
                 title: "ConsumerHouse Studenten",
                 description:
-                    "ConsumerHouse wou een manier om het rekruteren van jobstudenten te automatiseren, zodat deze kunnen helpen bij hun onderzoeken.",
+                    "ConsumerHouse zocht een manier om het rekruteren van jobstudenten te automatiseren, zodat deze kunnen helpen bij hun onderzoeken.",
                 url: "https://studenten-consumerhouse.be/",
                 imageUrls: ["/work/consumerhouse-projects.png"],
             },
@@ -207,6 +213,12 @@ export const LANGUAGE: Languages = {
         ourSolutions: "Our solutions",
         ourSolutionsNote: "Software we've created.",
         solutions: [
+            {
+                title: "TrinceBio",
+                description: "Their new website.",
+                url: "https://trincebio.com/",
+                imageUrls: ["/work/trincebio.png"],
+            },
             {
                 title: "ConsumerHouse Research",
                 description: "ConsumerHouse wanted a way to automate the recruitment of their testing users.",
